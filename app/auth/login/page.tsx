@@ -46,6 +46,7 @@ export default function LoginPage() {
 
     } catch (err) {
       setError('An error occurred during login');
+      console.log("error: ", err)
     } finally {
       setLoading(false);
     }

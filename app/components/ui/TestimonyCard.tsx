@@ -10,18 +10,18 @@ interface TestimonyProps {
 
 const TestimonyCard = ({ testimony, index }: TestimonyProps) => {
   const colorClasses = {
-    primary: 'border-blue-200 bg-blue-50',
-    secondary: 'border-orange-200 bg-orange-50',
-    neutral: 'border-gray-200 bg-white'
+    primary: "border-blue-200 bg-blue-50",
+    secondary: "border-orange-200 bg-orange-50",
+    neutral: "border-gray-200 bg-white",
   };
 
   const textColors = {
-    primary: 'text-blue-600',
-    secondary: 'text-orange-600', 
-    neutral: 'text-gray-600'
+    primary: "text-blue-600",
+    secondary: "text-orange-600",
+    neutral: "text-gray-600",
   };
 
-  const color = testimony.color || 'neutral';
+  const color = testimony.color || "neutral";
 
   return (
     <motion.div
@@ -35,9 +35,13 @@ const TestimonyCard = ({ testimony, index }: TestimonyProps) => {
       {testimony.rating && (
         <div className="flex mb-4">
           {[...Array(5)].map((_, i) => (
-            <StarIcon 
+            <StarIcon
               key={i}
-              className={`h-5 w-5 ${i < (testimony.rating ?? 0) ? 'text-yellow-400 fill-current' : 'text-gray-300'}`}
+              className={`h-5 w-5 ${
+                i < (testimony.rating ?? 0)
+                  ? "text-yellow-400 fill-current"
+                  : "text-gray-300"
+              }`}
             />
           ))}
         </div>
@@ -45,7 +49,7 @@ const TestimonyCard = ({ testimony, index }: TestimonyProps) => {
 
       {/* Quote */}
       <p className={`text-lg md:text-xl italic mb-6 ${textColors[color]}`}>
-        "{testimony.quote}"
+        {`"${testimony.quote}"`}
       </p>
 
       {/* Profile */}
