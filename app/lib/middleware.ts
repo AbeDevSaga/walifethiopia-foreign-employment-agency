@@ -34,6 +34,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   } catch (error) {
     // Invalid token
+    console.error('JWT verification failed:', error);
     return NextResponse.redirect(new URL('/auth/login', request.url));
   }
 }
