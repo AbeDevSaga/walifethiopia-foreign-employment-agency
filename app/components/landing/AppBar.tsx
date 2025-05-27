@@ -1,0 +1,183 @@
+import Link from "next/link";
+import Image from "next/image";
+import { useState } from "react";
+import { Dialog } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { TAppBar } from "@/app/constants/type";
+import { motion, AnimatePresence } from "framer-motion";
+
+export default function AppBar({ logo, links, button }: TAppBar) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Smooth scroll handler for hash links
+  const handleSmoothScroll = (e: React.MouseEvent, href: string) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    
+    if (href.startsWith('#')) {
+      const targetId = href.substring(1);
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+        
+        // Update URL without page reload
+        window.history.pushState(null, '', href);
+      }
+    } else {
+      // Regular navigation for non-hash links
+      window.location.href = href;
+    }
+  };
+
+  return (
+    <header className="fixed top-0 left-0 right-0 bg-gray-900 shadow-md z-50">
+      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+        {/* Company Logo (Left) */}
+        <Link href="/" className="flex items-center">
+          <Image
+            src={logo.src}
+            alt={logo.alt}
+            width={logo.width}
+            height={logo.height}
+            className={logo.className || "h-10 w-auto"}
+          />
+        </Link>
+
+        {/* Desktop Navigation (Center) */}
+        <nav className="hidden md:flex space-x-8">
+          {links.map((link, index) => (
+            <Link
+              key={index}
+              href={link.href}
+              onClick={(e) => handleSmoothScroll(e, link.href)}
+              className={`text-gray-100 hover:text-white transition ${
+                link.className || ""
+              }`}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Desktop Login Button (Right) */}
+        <div className="hidden md:block">
+          <Link
+            href={button.href}
+            className={`bg-white text-gray-900 px-6 py-2 rounded-lg hover:bg-gray-100 transition duration-200`}
+          >
+            {button.label}
+          </Link>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          type="button"
+          className="md:hidden -m-2.5 p-2.5 text-gray-100 hover:text-white"
+          onClick={() => setMobileMenuOpen(true)}
+        >
+          <span className="sr-only">Open menu</span>
+          <Bars3Icon className="h-6 w-6" />
+        </button>
+      </div>
+
+      {/* Mobile Menu (Slide-in Panel from Left) */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <Dialog
+            as="div"
+            static
+            open={mobileMenuOpen}
+            onClose={setMobileMenuOpen}
+            className="md:hidden fixed inset-0 z-50"
+          >
+            {/* Backdrop with fade animation */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/50"
+              onClick={() => setMobileMenuOpen(false)}
+            />
+
+            {/* Panel sliding from left */}
+            <motion.div
+              initial={{ x: "-100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "-100%" }}
+              transition={{ type: "tween", ease: "easeInOut", duration: 0.3 }}
+              className="fixed inset-y-0 left-0 w-4/5 max-w-sm bg-gray-800 shadow-xl"
+            >
+              <div className="flex items-center justify-between px-4 py-3 border-b border-gray-700">
+                <Link
+                  href="/"
+                  className="flex items-center"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={80}
+                    height={32}
+                    className="h-8 w-auto"
+                  />
+                </Link>
+                <button
+                  type="button"
+                  className="-m-2.5 p-2.5 text-gray-100 hover:text-white"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <span className="sr-only">Close menu</span>
+                  <XMarkIcon className="h-6 w-6" />
+                </button>
+              </div>
+
+              <div className="flow-root px-4 py-6">
+                <div className="-my-6 divide-y divide-gray-700">
+                  <div className="space-y-4 py-6">
+                    {links.map((link, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.05 + 0.1 }}
+                      >
+                        <Link
+                          href={link.href}
+                          onClick={(e) => handleSmoothScroll(e, link.href)}
+                          className={`block py-2 text-lg text-gray-100 hover:text-white ${
+                            link.className || ""
+                          }`}
+                        >
+                          {link.label}
+                        </Link>
+                      </motion.div>
+                    ))}
+                  </div>
+                  <div className="py-6">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: links.length * 0.05 + 0.1 }}
+                    >
+                      <Link
+                        href={button.href}
+                        className={`block w-full text-center bg-white text-gray-900 px-6 py-3 rounded-lg text-lg hover:bg-gray-100`}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {button.label}
+                      </Link>
+                    </motion.div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </Dialog>
+        )}
+      </AnimatePresence>
+    </header>
+  );
+}
