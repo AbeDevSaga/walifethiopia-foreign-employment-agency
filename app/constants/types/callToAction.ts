@@ -2,7 +2,7 @@ import { TCallToAction } from "../type";
 
 export const defaultCallToAction: TCallToAction = {
   title: "Ready to Transform Your Future?",
-  description: "Join hundreds of successful candidates who found international opportunities through Walif Ethiopia.",
+  description: "Join hundreds of successful candidates who found international opportunities through WalifEthiopia.",
   backgroundColor: "primary",
   buttons: [
     {

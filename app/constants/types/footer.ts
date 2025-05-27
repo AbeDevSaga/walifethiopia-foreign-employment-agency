@@ -29,15 +29,15 @@ export const defaultFooterData: TFooterProps = {
     }
   ],
   socialMedia: [
-    { platform: "Facebook", icon: "facebook", href: "https://facebook.com/Walif Ethiopia" },
-    { platform: "Twitter", icon: "twitter", href: "https://twitter.com/Walif Ethiopia" },
-    { platform: "LinkedIn", icon: "linkedin", href: "https://linkedin.com/company/Walif Ethiopia" },
-    { platform: "Instagram", icon: "instagram", href: "https://instagram.com/Walif Ethiopia" }
+    { platform: "Facebook", icon: "facebook", href: "https://facebook.com/WalifEthiopia" },
+    { platform: "Twitter", icon: "twitter", href: "https://twitter.com/WalifEthiopia" },
+    { platform: "LinkedIn", icon: "linkedin", href: "https://linkedin.com/company/WalifEthiopia" },
+    { platform: "Instagram", icon: "instagram", href: "https://instagram.com/WalifEthiopia" }
   ],
   contactInfo: {
-    email: "info@Walif Ethiopia.com",
+    email: "info@WalifEthiopia.com",
     phone: "+251 912 345 678",
     address: "Addis Ababa, Ethiopia"
   },
-  copyrightText: "© 2023 Walif Ethiopia. All rights reserved."
+  copyrightText: "© 2023 WalifEthiopia. All rights reserved."
 };

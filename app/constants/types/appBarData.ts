@@ -1,10 +1,10 @@
 import { TAppBar } from "../type";
-import haramaya from "@/public/images/logo.png";
+import logo from "@/public/images/walif.png";
 
 export const appBarData: TAppBar = {
   logo: {
-    src: haramaya,
-    alt: "Walif Ethiopia Logo",
+    src: logo,
+    alt: "WalifEthiopia Logo",
     width: 160,
     height: 60,
     className: "h-12 w-auto",

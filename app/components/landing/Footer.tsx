@@ -33,7 +33,7 @@ const Footer: React.FC<footerProps> = ({ footer }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <h3 className="text-xl font-bold mb-4">Walif Ethiopia</h3>
+            <h3 className="text-xl font-bold mb-4">WalifEthiopia</h3>
             <p className="mb-4">
               Connecting Ethiopian talent with global opportunities through
               professional training and placement services.

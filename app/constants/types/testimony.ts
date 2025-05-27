@@ -4,7 +4,7 @@ import { TTestimony } from "../type";
 
 export const testimonyData: TTestimony[] = [
   {
-    quote: "Walif Ethiopia helped me place 12 qualified nurses in Germany within 3 months. Their vetting process saves me countless hours.",
+    quote: "WalifEthiopia helped me place 12 qualified nurses in Germany within 3 months. Their vetting process saves me countless hours.",
     name: "Alemayehu Kebede",
     role: "Recruitment Agent",
     company: "Global Talent Solutions",
