@@ -26,20 +26,27 @@ const Hero: React.FC<heroProps> = ({ hero }) => {
       id="hero"
       className="relative min-h-screen flex items-center justify-center"
     >
-      {/* Background Image */}
-      {hero.backgroundImage && (
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: `url(${
-              hero.backgroundImage
-            })`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        />
-      )}
+      <div
+        className="absolute inset-0 z-0 bg-gray-900" // Fallback background color
+        style={{
+          backgroundImage: hero.backgroundImage
+            ? `url(${
+                typeof hero.backgroundImage === "string"
+                  ? hero.backgroundImage
+                  : hero.backgroundImage.src
+              })`
+            : undefined,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundAttachment: "fixed", // Optional: makes background fixed during scroll
+        }}
+      >
+        {/* Optional: Add a loading state or fallback content */}
+        {!hero.backgroundImage && (
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900"></div>
+        )}
+      </div>
 
       {/* Overlay */}
       <div className={`absolute inset-0 ${hero.overlayColor || ""}`}></div>
