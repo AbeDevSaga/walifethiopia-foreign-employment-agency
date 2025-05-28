@@ -1,4 +1,5 @@
 import { THero } from "../type";
+import bg from "@/public/images/bg.jpg";
 
 export const defaultHeroData: THero = {
   title: {
@@ -10,7 +11,7 @@ export const defaultHeroData: THero = {
     default:
       "WalifEthiopia empowers agents to match skilled professionals with international employers through our verified candidate network.",
   },
-  backgroundImage: "/images/hero-bg.jpg",
+  backgroundImage: bg,
   overlayColor: "bg-black/30",
   textColor: {
     primary: "text-white",

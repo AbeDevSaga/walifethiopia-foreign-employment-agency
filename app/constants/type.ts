@@ -37,7 +37,7 @@ export type TAppBar = {
 export type THero = {
   title: TTranslatable;
   description: TTranslatable;
-  backgroundImage?: string;
+  backgroundImage?: string | StaticImageData;
   overlayColor?: string;
   textColor?: {
     primary?: string;

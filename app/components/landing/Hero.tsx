@@ -3,19 +3,19 @@ import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import React from "react";
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from "next-i18next";
 
 interface heroProps {
   hero: THero;
 }
 
 const Hero: React.FC<heroProps> = ({ hero }) => {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation("common");
 
   // Memoized translation function
   const getTranslatedContent = React.useCallback(
     (content: string | { key: string; default: string }) => {
-      if (typeof content === 'string') return content;
+      if (typeof content === "string") return content;
       return t(content.key, { defaultValue: content.default });
     },
     [t]
@@ -25,16 +25,22 @@ const Hero: React.FC<heroProps> = ({ hero }) => {
     <section
       id="hero"
       className="relative min-h-screen flex items-center justify-center"
-      style={
-        hero.backgroundImage
-          ? {
-              backgroundImage: `url(${hero.backgroundImage})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }
-          : {}
-      }
     >
+      {/* Background Image */}
+      {hero.backgroundImage && (
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: `url(${
+              hero.backgroundImage
+            })`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        />
+      )}
+
       {/* Overlay */}
       <div className={`absolute inset-0 ${hero.overlayColor || ""}`}></div>
 

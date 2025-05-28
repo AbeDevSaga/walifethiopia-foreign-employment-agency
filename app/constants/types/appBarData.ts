@@ -5,9 +5,9 @@ export const appBarData: TAppBar = {
   logo: {
     src: logo,
     alt: "WalifEthiopia Logo",
-    width: 160,
-    height: 60,
-    className: "h-12 w-auto",
+    width: 140,
+    height: 40,
+    className: "h-10 w-auto",
   },
   links: [
     { href: "#hero", label: "Home" },
