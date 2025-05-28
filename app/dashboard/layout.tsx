@@ -10,32 +10,35 @@ import Navbar from "../components/dashboard/Navbar";
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  // const [isMobile, setIsMobile] = useState(false);
   const router = useRouter();
   const { loading, user } = useSelector((state: RootState) => state.auth);
+  console.log("user: ", user);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
   useEffect(() => {
-    if (!loading) {
-      if (!user) {
-        router.push("/login");
-      }
+    if (loading) return; // Wait until auth check is complete
 
-      const pathname = window.location.pathname;
-      const pathSegments = pathname.split("/").filter(Boolean);
-      const lastSegment = pathSegments[pathSegments.length - 1] || "dashboard";
+    // Redirect to login if no user
+    if (!user) {
+      router.push("/auth/login");
+      return;
+    }
 
-      const allowedPaths = permissions[user?.role as TRole] || [];
-      if (!allowedPaths.includes(lastSegment)) {
-        router.push("/unauthorized");
-      }
+    // Check route permissions
+    const pathname = window.location.pathname;
+    const pathSegments = pathname.split("/").filter(Boolean);
+    const lastSegment = pathSegments[pathSegments.length - 1] || "dashboard";
+
+    const allowedPaths = permissions[user.role as TRole] || [];
+    if (!allowedPaths.includes(lastSegment)) {
+      router.push("/unauthorized");
     }
   }, [loading, user, router]);
 
-  if (loading || !user) {
+  if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
         Loading...
@@ -43,11 +46,13 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
     );
   }
 
+  if (!user) return null;
+
   return (
     <div className="dashboard-container">
-      <SidebarSection isOpen={isSidebarOpen} onToggleSidebar={toggleSidebar}/>
+      <SidebarSection isOpen={isSidebarOpen} onToggleSidebar={toggleSidebar} />
       <div className="main-content">
-        <Navbar onToggleSidebar={toggleSidebar}/>
+        <Navbar onToggleSidebar={toggleSidebar} />
         <main className="dashboard-main">{children}</main>
       </div>
     </div>
