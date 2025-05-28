@@ -15,12 +15,6 @@ export default function AppBar({ logo, links, button }: TAppBar) {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const languages = [
-    { code: "en", name: "English" },
-    { code: "am", name: "አማርኛ" },
-    { code: "ar", name: "العربية" },
-  ];
-
   const handleSmoothScroll = (e: React.MouseEvent, href: string) => {
     e.preventDefault();
     setMobileMenuOpen(false);
@@ -39,12 +33,6 @@ export default function AppBar({ logo, links, button }: TAppBar) {
     } else {
       router.push(href);
     }
-  };
-
-  const changeLanguage = (locale: string) => {
-    setMobileMenuOpen(false);
-    const newPath = pathname.replace(/^\/(en|am|ar)/, "") || "/";
-    router.push(`/${locale}${newPath}`);
   };
 
   return (
