@@ -2,13 +2,15 @@ import { StaticImageData } from "next/image";
 
 export type TTranslatable = string | { key: string; default: string };
 
-export type TRole = "admin" | "super-admin" | "agent" | "user";
+export type TRole = "admin" | "super-admin" | "agent" | "candidate";
 
 // Common Types
 export type TLanguage = {
-  code: string;
-  name: string;
-  flag?: string | StaticImageData;
+  country: {
+    image: StaticImageData;
+    language: string;
+    code: string;
+  };
 };
 
 export type TNavLink = {

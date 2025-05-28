@@ -8,9 +8,10 @@ import ActionButton from "../ui/ActionButton";
 
 interface SidebarSectionProps {
   isOpen: boolean; // Prop to control open/close state
+  onToggleSidebar: () => void;
 }
 
-export default function SidebarSection({ isOpen }: SidebarSectionProps) {
+export default function SidebarSection({ isOpen, onToggleSidebar }: SidebarSectionProps) {
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -23,13 +24,13 @@ export default function SidebarSection({ isOpen }: SidebarSectionProps) {
 
   return (
     <div
-      className={`fixed lg:static inset-y-0 left-0 w-[246px] bg-sidebarcolor h-screen flex flex-col transform transition-transform duration-300 ease-in-out ${
+      className={`sidebar-section fixed lg:static inset-y-0 left-0 w-[246px] h-screen flex flex-col transform transition-transform duration-300 ease-in-out ${
         isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
       }`}
     >
       {/* Sidebar */}
       <div className="flex-1 overflow-hidden">
-        <Sidebar />
+        <Sidebar onToggleSidebar={onToggleSidebar}/>
       </div>
       {/* Logout Button */}
       <div className="px-5 pb-5">

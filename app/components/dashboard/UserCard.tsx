@@ -37,7 +37,7 @@ function UserCard({ user }: UserCardProps) {
       <div className="flex items-center space-x-2 relative">
         {/* User Info */}
         <div className="text-right">
-          <p className="text-titleFg">
+          <p className="text-title">
             {profile?.name?.split(" ")[0] || profile.name.split(" ")[0]}
           </p>
           <p className="text-sm">{profile?.role || profile.role}</p>

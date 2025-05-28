@@ -4,13 +4,16 @@ import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import { RootState } from "@/app/redux/store";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 import Logo from "./Logo";
 import NavItem from "./NavItem";
 import { getFilteredSidebarRoutes } from "@/app/utils/sidebarUtils";
 import { TRole } from "@/app/constants/type";
 
-
-export default function Sidebar() {
+interface SidebarProps {
+  onToggleSidebar: () => void;
+}
+function Sidebar({ onToggleSidebar }: SidebarProps) {
   const pathname = usePathname();
   const router = useRouter();
   const userRole = useSelector((state: RootState) => state.auth.user?.role);
@@ -31,6 +34,15 @@ export default function Sidebar() {
 
   return (
     <div className="flex w-full flex-col h-full">
+      <div className="absolute -right-0 p-2">
+        <button
+          className="lg:hidden text-gray-600 focus:outline-none"
+          onClick={onToggleSidebar}
+        >
+          
+        <XMarkIcon className="h-6 w-6 cursor-pointer" />
+        </button>
+      </div>
       {/* Logo Section */}
       <Logo />
       {/* Scrollable Sidebar Items */}
@@ -48,3 +60,5 @@ export default function Sidebar() {
     </div>
   );
 }
+
+export default Sidebar;

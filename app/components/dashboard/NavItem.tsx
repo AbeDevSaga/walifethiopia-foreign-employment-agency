@@ -2,6 +2,7 @@ import React from "react";
 import {
   MdDashboard,
   MdPeople,
+  MdNotifications,
 } from "react-icons/md";
 import {
   FaUserShield,
@@ -22,6 +23,7 @@ const iconMapping: IconMapping = {
   candidates: FaUserGraduate,
   manageAdmins: FaUserShield,
   superAdmins: RiUserStarLine,
+  notifications: MdNotifications,
   profile: FaUserAlt,
 };
 
@@ -36,8 +38,8 @@ export default function NavItem({ icon, text, active }: NavItemProps) {
 
   return (
     <div
-      className={`flex items-center gap-4 px-4 py-2 rounded-md cursor-pointer transition-colors ${
-        active ? "bg-white text-primary" : "text-foreground hover:bg-white"
+      className={`nav-item flex items-center gap-4 px-4 py-2 rounded-md cursor-pointer transition-colors ${
+        active ? "active-nav-item" : ""
       }`}
       style={{
         width: 210,

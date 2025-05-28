@@ -1,31 +1,56 @@
 @import "tailwindcss";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+/* In your global CSS file */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fbf5fe;
+  --primary: #aa7d77;
+  --forecolor: #0a1b39;
+  --dimmedforecolor: #cacaca;
+  --foreground: #637381;
+  --white: #ffffff;
+  --sidebarcolor: #f2f3f6;
+  --navbarbg: #f9fafb;
+  --totalUserFg: #2646a7;
+  --totalUserBg: #98b1fb3a;
+  --activeUserFg: #1fa04e;
+  --activeUserBg: #90faa285;
+  --totalRevenuFg: #f1aa2f;
+  --totalRevenuBg: #fedea58f;
+  --premiumUserFg: #f1aa2f;
+  --premiumUserBg: #fedea58f;
+  --newUserFg: #2e82c2;
+  --newUserBg: #9bd2fd77;
+  --titleFg: #212b36;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark {
+  --background: #222222;
+  --primary: #aa7d77;
+  --forecolor: #ffffff;
+  --dimmedforecolor: #ffffff;
+  --foreground: #cccccc;
+  --white: #333333;
+  --sidebarcolor: #2d2d2d;
+  --navbarbg: #333333;
+  --totalUserFg: #98b1fb;
+  --totalUserBg: #2646a73a;
+  --activeUserFg: #90faa2;
+  --activeUserBg: #1fa04e85;
+  --totalRevenuFg: #fedea5;
+  --totalRevenuBg: #f1aa2f8f;
+  --premiumUserFg: #fedea5;
+  --premiumUserBg: #f1aa2f8f;
+  --newUserFg: #9bd2fd;
+  --newUserBg: #2e82c277;
+  --titleFg: #ffffff;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .main-layout {
@@ -56,11 +81,10 @@ body {
 
 /* Sidebar style */
 .sidebar {
-  width: 250px;  /* Adjust the width of your sidebar */
-  background-color: #333;
+  width: 250px; 
+  background-color: var(--sidebarcolor);
   color: white;
   padding: 20px;
-  /* Add other sidebar-specific styles */
 }
 
 /* Main content area */
@@ -82,4 +106,68 @@ body {
   flex-grow: 1;
   padding: 20px;
   overflow-y: auto;
+}
+
+
+
+/* Component style */
+/* Sidebar component */
+.sidebar-section {
+  background-color: var(--sidebarcolor);
+  z-index: 1000;
+}
+
+/* NavItem component */
+.nav-item {
+  color: var(--foreground);
+  background: transparent;
+}
+
+.nav-item:hover {
+  background: var(--white);
+}
+
+.active-nav-item {
+  background: var(--white);
+  color: var(--primary);
+}
+
+/* ActionButton component */
+.action-button {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+/* Navbar component */
+.navbar {
+  background-color: var(--navbarbg);
+}
+
+/* Common component */
+.text-white {
+  color: var(--white);
+}
+.text-primary {
+  color: var(--primary);
+}
+.text-foreground {
+  color: var(--foreground);
+}
+.text-dimmed-foreground {
+  color: var(--dimmedforecolor);
+}
+.text-title {
+  color: var(--titleFg);
+}
+.bg-primary {
+  background-color: var(--primary);
+}
+.bg-white {
+  background-color: var(--white);
+}
+.bg-sidebar {
+  background-color: var(--sidebarcolor);
+}
+.bg-navbar {
+  background-color: var(--navbarbg);
 }

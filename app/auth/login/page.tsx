@@ -6,43 +6,32 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { FiMail, FiLock, FiAlertCircle } from "react-icons/fi";
 import { FaSpinner } from "react-icons/fa";
+import { AppDispatch } from "@/app/redux/store";
+import { useDispatch } from "react-redux";
+import { loginUser } from "@/app/redux/slices/authSlice";
 
 export default function LoginPage() {
+  const dispatch = useDispatch<AppDispatch>();
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError("");
-
     try {
-      const response = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const data = await response.json();
-
-      if (!data.success) {
-        setError(data.message || "Login failed");
-        return;
+      const resultAction = await dispatch(loginUser({ email, password }));
+      if (loginUser.fulfilled.match(resultAction)) {
+        router.push("/dashboard");
+      } else if (loginUser.rejected.match(resultAction)) {
+        setError("Login failed");
       }
-
-      // Store token and user data
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("user", JSON.stringify(data.user));
-
-      router.push("/dashboard");
     } catch (err) {
       setError("An error occurred during login");
-      console.log("error: ", err);
+      console.error("Login error:", err);
     } finally {
       setLoading(false);
     }
@@ -77,7 +66,7 @@ export default function LoginPage() {
             </motion.div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6 text-gray-900">
             <div>
               <label
                 htmlFor="email"

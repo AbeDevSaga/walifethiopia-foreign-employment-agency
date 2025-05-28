@@ -14,8 +14,8 @@ const userSchema = new mongoose.Schema<IUser>({
   password: { type: String, required: true },
   role: {
     type: String,
-    enum: ["admin", "super-admin", "agent", "user"],
-    default: "user",
+    enum: ["admin", "super-admin", "agent", "candidate"] as TRole[],
+    default: "candidate",
   },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now }

@@ -1,8 +1,6 @@
-import { TRole, TUser } from "@/app/constants/type";
+import { TUser } from "@/app/constants/type";
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-
-const API_URL = process.env.NEXT_PUBLIC_AUTH_API;
 
 interface AuthState {
   user: TUser | null;
@@ -16,7 +14,7 @@ export const registerUser = createAsyncThunk(
   "auth/register",
   async (userData: TUser, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${API_URL}/register`, userData);
+      const response = await axios.post(`api/auth/register`, userData);
       return response.data;
     } catch (error: any) {
       return rejectWithValue(error.response.data);
@@ -26,10 +24,13 @@ export const registerUser = createAsyncThunk(
 
 export const loginUser = createAsyncThunk(
   "auth/login",
-  async (userData: TUser, { rejectWithValue }) => {
+  async (userData: { email: string; password: string }, { rejectWithValue }) => {
     console.log("userData: ", userData);
     try {
-      const response = await axios.post(`${API_URL}/login`, userData);
+      const response = await axios.post(`api/auth/login`, {
+        email: userData.email,
+        password: userData.password,
+      });
       console.log("response.data: ", response.data);
       return response.data;
     } catch (error: any) {

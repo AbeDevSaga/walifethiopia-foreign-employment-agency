@@ -3,7 +3,6 @@ import { useTranslation } from "next-i18next";
 import { useState, useEffect } from "react";
 import { GlobeAltIcon } from "@heroicons/react/24/outline";
 import { motion, AnimatePresence } from "framer-motion";
-import { languageData } from "@/app/constants/types/languages";
 
 interface LanguageSelectionProps {
   mobile?: boolean;
@@ -16,6 +15,11 @@ export const LanguageSelection = ({
   const [isOpen, setIsOpen] = useState(false);
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
   const [isChanging, setIsChanging] = useState(false);
+  const languageData = [
+    { code: "en", name: "English" },
+    { code: "am", name: "አማርኛ" },
+    { code: "ar", name: "العربية" },
+  ];
   // Sync language changes
   useEffect(() => {
     const handleLanguageChanged = (lng: string) => {

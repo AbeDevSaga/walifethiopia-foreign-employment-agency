@@ -1,6 +1,6 @@
 "use client";
 import { ReactNode, useEffect, useState } from "react";
-import { useRouter } from "next/navigation"; 
+import { useRouter } from "next/navigation";
 import { TRole } from "../constants/type";
 import { RootState } from "../redux/store";
 import { useSelector } from "react-redux";
@@ -10,7 +10,7 @@ import Navbar from "../components/dashboard/Navbar";
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  // const [isMobile, setIsMobile] = useState(false);
   const router = useRouter();
   const { loading, user } = useSelector((state: RootState) => state.auth);
 
@@ -45,13 +45,11 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
 
   return (
     <div className="dashboard-container">
-      <SidebarSection isOpen={isSidebarOpen} />
+      <SidebarSection isOpen={isSidebarOpen} onToggleSidebar={toggleSidebar}/>
       <div className="main-content">
-        {/* Navbar */}
-        <Navbar onToggleSidebar={toggleSidebar} />
+        <Navbar onToggleSidebar={toggleSidebar}/>
         <main className="dashboard-main">{children}</main>
       </div>
     </div>
   );
 }
-

@@ -51,7 +51,7 @@ const ActionButton: React.FC<ActionButtonProps> = ({
 
   return (
     <button
-      className="w-auto bg-primary text-white py-2 px-12 rounded-lg flex items-center justify-center shadow-lg hover:shadow-none transition-shadow  whitespace-nowrap"
+      className="action-button w-auto py-2 px-12 rounded-lg flex items-center justify-center shadow-lg hover:shadow-none transition-shadow  whitespace-nowrap"
       onClick={onClick}
     >
       {IconComponent && <IconComponent className="mr-3 text-white" />}
