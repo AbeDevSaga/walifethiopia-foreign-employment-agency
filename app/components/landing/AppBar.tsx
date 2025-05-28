@@ -6,7 +6,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { TAppBar } from "@/app/constants/type";
 import { motion, AnimatePresence } from "framer-motion";
 import { LanguageSelection } from "../ui/LanguageSelection";
-import {  useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 
 export default function AppBar({ logo, links, button }: TAppBar) {
@@ -88,7 +88,6 @@ export default function AppBar({ logo, links, button }: TAppBar) {
           </button>
         </div>
       </div>
-
       {/* Mobile Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
@@ -108,41 +107,45 @@ export default function AppBar({ logo, links, button }: TAppBar) {
               onClick={() => setMobileMenuOpen(false)}
             />
 
-            {/* Panel */}
+            {/* Panel - Now scrollable */}
             <motion.div
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "tween", ease: "easeInOut", duration: 0.3 }}
-              className="fixed inset-y-0 left-0 w-4/5 max-w-sm bg-gray-800 shadow-xl"
+              className="fixed inset-y-0 left-0 w-4/5 max-w-sm flex flex-col bg-gray-800 shadow-xl"
             >
-              <div className="flex items-center justify-between px-4 py-3 border-b border-gray-700">
-                <Link
-                  href="/"
-                  className="flex items-center"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <Image
-                    src={logo.src}
-                    alt={logo.alt}
-                    width={80}
-                    height={32}
-                    className="h-8 w-auto"
-                  />
-                </Link>
-                <button
-                  type="button"
-                  className="-m-2.5 p-2.5 text-gray-100 hover:text-white"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <span className="sr-only">Close menu</span>
-                  <XMarkIcon className="h-6 w-6" />
-                </button>
+              {/* Header with logo and close button */}
+              <div className="flex-shrink-0 px-4 py-3 border-b border-gray-700">
+                <div className="flex items-center justify-between">
+                  <Link
+                    href="/"
+                    className="flex items-center"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <Image
+                      src={logo.src}
+                      alt={logo.alt}
+                      width={80}
+                      height={32}
+                      className="h-8 w-auto"
+                    />
+                  </Link>
+                  <button
+                    type="button"
+                    className="-m-2.5 p-2.5 text-gray-100 hover:text-white"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <span className="sr-only">Close menu</span>
+                    <XMarkIcon className="h-6 w-6" />
+                  </button>
+                </div>
               </div>
 
-              <div className="flow-root px-4 py-6">
-                <div className="-my-6 divide-y divide-gray-700">
-                  <div className="space-y-4 py-6">
+              {/* Scrollable content area */}
+              <div className="flex-1 overflow-y-auto">
+                <div className="px-4 py-6">
+                  <div className="space-y-4 pb-6">
                     {links.map((link, index) => (
                       <motion.div
                         key={index}
@@ -162,29 +165,33 @@ export default function AppBar({ logo, links, button }: TAppBar) {
                       </motion.div>
                     ))}
                   </div>
-                  <div className="py-6 space-y-4">
-                    {/* Mobile Language Selection */}
-                    <div className="flex flex-col space-y-2">
-                      <span className="text-gray-400 text-sm">
-                        {t("select_language")}
-                      </span>
-                      <LanguageSelection mobile />
-                    </div>
+                </div>
+              </div>
 
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: links.length * 0.05 + 0.1 }}
-                    >
-                      <Link
-                        href={button.href}
-                        className={`block w-full text-center bg-white text-gray-900 px-6 py-3 rounded-lg text-lg hover:bg-gray-100`}
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        {button.label}
-                      </Link>
-                    </motion.div>
+              {/* Footer with language selection and button */}
+              <div className="flex-shrink-0 px-4 py-6 border-t border-gray-700">
+                <div className="space-y-4">
+                  {/* Mobile Language Selection */}
+                  <div className="flex flex-col space-y-2">
+                    <span className="text-gray-400 text-sm">
+                      {t("select_language")}
+                    </span>
+                    <LanguageSelection mobile />
                   </div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: links.length * 0.05 + 0.1 }}
+                  >
+                    <Link
+                      href={button.href}
+                      className={`block w-full text-center bg-white text-gray-900 px-6 py-3 rounded-lg text-lg hover:bg-gray-100`}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {button.label}
+                    </Link>
+                  </motion.div>
                 </div>
               </div>
             </motion.div>
