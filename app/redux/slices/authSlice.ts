@@ -2,6 +2,17 @@ import { TUser } from "@/app/constants/type";
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
+interface AuthResponse {
+  user: TUser;
+  token: string;
+  message?: string;
+}
+
+interface ErrorResponse {
+  message: string;
+  // Add other error fields if your API returns more
+}
+
 interface AuthState {
   user: TUser | null;
   token: string | null;
@@ -10,34 +21,43 @@ interface AuthState {
 }
 
 // Async Thunks
-export const registerUser = createAsyncThunk(
-  "auth/register",
-  async (userData: TUser, { rejectWithValue }) => {
-    try {
-      const response = await axios.post(`api/auth/register`, userData);
-      return response.data;
-    } catch (error: any) {
-      return rejectWithValue(error.response.data);
+export const registerUser = createAsyncThunk<
+  AuthResponse,
+  TUser,
+  { rejectValue: ErrorResponse }
+>("auth/register", async (userData: TUser, { rejectWithValue }) => {
+  try {
+    const response = await axios.post<AuthResponse>(
+      `api/auth/register`,
+      userData
+    );
+    return response.data;
+  } catch (error) {
+    if (error) {
+      return rejectWithValue({ message: "Registration failed" });
     }
+    return rejectWithValue({ message: "An unexpected error occurred" });
   }
-);
+});
 
-export const loginUser = createAsyncThunk(
-  "auth/login",
-  async (userData: { email: string; password: string }, { rejectWithValue }) => {
-    console.log("userData: ", userData);
-    try {
-      const response = await axios.post(`api/auth/login`, {
-        email: userData.email,
-        password: userData.password,
-      });
-      console.log("response.data: ", response.data);
-      return response.data;
-    } catch (error: any) {
-      return rejectWithValue(error.response.data);
+export const loginUser = createAsyncThunk<
+  AuthResponse,
+  { email: string; password: string },
+  { rejectValue: ErrorResponse }
+>("auth/login", async (userData, { rejectWithValue }) => {
+  try {
+    const response = await axios.post<AuthResponse>(`api/auth/login`, {
+      email: userData.email,
+      password: userData.password,
+    });
+    return response.data;
+  } catch (error) {
+    if (error) {
+      return rejectWithValue({ message: "Login failed" });
     }
+    return rejectWithValue({ message: "An unexpected error occurred" });
   }
-);
+});
 
 // Initial state with proper type checking for localStorage
 const getInitialAuthState = (): AuthState => {
@@ -88,35 +108,44 @@ const authSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(registerUser.fulfilled, (state, action: PayloadAction<any>) => {
-        state.loading = false;
-        state.user = {
-          ...action.payload.user,
-        };
-        state.token = action.payload.token;
-      })
-      .addCase(registerUser.rejected, (state, action: PayloadAction<any>) => {
-        state.loading = false;
-        state.error = action.payload?.message || "Registration failed";
-      })
+      .addCase(
+        registerUser.fulfilled,
+        (state, action: PayloadAction<AuthResponse>) => {
+          state.loading = false;
+          state.user = action.payload.user;
+          state.token = action.payload.token;
+        }
+      )
+      .addCase(
+        registerUser.rejected,
+        (state, action: PayloadAction<ErrorResponse | undefined>) => {
+          state.loading = false;
+          state.error = action.payload?.message || "Registration failed";
+        }
+      )
 
       // Login cases
       .addCase(loginUser.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(loginUser.fulfilled, (state, action: PayloadAction<any>) => {
-        state.loading = false;
-        state.user = action.payload.user;
-        state.token = action.payload.token;
-        // Store in localStorage
-        localStorage.setItem("token", action.payload.token);
-        localStorage.setItem("user", JSON.stringify(action.payload.user));
-      })
-      .addCase(loginUser.rejected, (state, action: PayloadAction<any>) => {
-        state.loading = false;
-        state.error = action.payload?.message || "Login failed";
-      });
+      .addCase(
+        loginUser.fulfilled,
+        (state, action: PayloadAction<AuthResponse>) => {
+          state.loading = false;
+          state.user = action.payload.user;
+          state.token = action.payload.token;
+          localStorage.setItem("token", action.payload.token);
+          localStorage.setItem("user", JSON.stringify(action.payload.user));
+        }
+      )
+      .addCase(
+        loginUser.rejected,
+        (state, action: PayloadAction<ErrorResponse | undefined>) => {
+          state.loading = false;
+          state.error = action.payload?.message || "Login failed";
+        }
+      );
   },
 });
 
