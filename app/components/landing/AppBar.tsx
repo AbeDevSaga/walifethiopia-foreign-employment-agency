@@ -6,13 +6,12 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { TAppBar } from "@/app/constants/type";
 import { motion, AnimatePresence } from "framer-motion";
 import { LanguageSelection } from "../ui/LanguageSelection";
-import { usePathname, useRouter } from "next/navigation";
+import {  useRouter } from "next/navigation";
 import { useTranslation } from "next-i18next";
 
 export default function AppBar({ logo, links, button }: TAppBar) {
   const router = useRouter();
   const { t } = useTranslation("common");
-  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleSmoothScroll = (e: React.MouseEvent, href: string) => {
