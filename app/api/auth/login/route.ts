@@ -10,6 +10,7 @@ export async function POST(request: Request) {
   const { email, password } = await request.json();
 
   try {
+    console.log('Login attempt:', { email, password });
     // 1. Check if user exists
     const user = await User.findOne({ email });
     if (!user) {
@@ -39,12 +40,7 @@ export async function POST(request: Request) {
     return NextResponse.json({
       success: true,
       token,
-      user: {
-        id: user._id,
-        name: user.name,
-        email: user.email,
-        role: user.role
-      }
+      user,
     });
 
   } catch (error) {

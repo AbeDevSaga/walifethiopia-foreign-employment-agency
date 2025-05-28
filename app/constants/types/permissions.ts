@@ -1,0 +1,40 @@
+import { TRole } from "../type";
+export const permissions: Record<TRole, string[]> = {
+  "admin": [
+    "dashboard",
+    "users",
+    "department",
+    "students",
+    "advisors",
+    "department-heads",
+    "projects",
+    "notifications",
+    "manage-admins",
+  ],
+  "super-admin": [
+    "dashboard",
+    "projects",
+    "team-members",
+    "notifications",
+    "manuals",
+    "schedule",
+    "chat-groups",
+  ],
+  "agent": [
+    "dashboard",
+    "users",
+    "projects",
+    "notifications",
+    "chat-groups",
+    "manuals",
+    "schedule",
+  ],
+  "user": [
+    "dashboard",
+    "users",
+    "projects",
+    "advisors",
+    "notifications",
+    "manuals",
+  ],
+};

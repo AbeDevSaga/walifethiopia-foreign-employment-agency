@@ -2,6 +2,9 @@ import { StaticImageData } from "next/image";
 
 export type TTranslatable = string | { key: string; default: string };
 
+export type TRole = "admin" | "super-admin" | "agent" | "user";
+
+// Common Types
 export type TLanguage = {
   code: string;
   name: string;
@@ -22,6 +25,7 @@ export type TLogo = {
   className?: string;
 };
 
+// Components Types
 export type TButton = {
   href: string;
   label: string;
@@ -64,7 +68,7 @@ export type TTestimony = {
   role: string;
   company?: string;
   profileImage?: string | StaticImageData;
-  color?: 'primary' | 'secondary' | 'neutral';
+  color?: "primary" | "secondary" | "neutral";
   delay?: number;
   rating?: number;
 };
@@ -72,11 +76,11 @@ export type TTestimony = {
 export type TCallToAction = {
   title: string;
   description: string;
-  backgroundColor?: 'primary' | 'secondary' | 'dark';
+  backgroundColor?: "primary" | "secondary" | "dark";
   backgroundImage?: string | StaticImageData;
   buttons: {
     text: string;
-    variant: 'solid' | 'outline';
+    variant: "solid" | "outline";
     onClick?: () => void;
     href?: string;
   }[];
@@ -86,7 +90,6 @@ export type TCallToAction = {
     button?: string;
   };
 };
-
 
 // Footer Section Types
 export type TFooterLink = {
@@ -115,4 +118,27 @@ export type TFooterProps = {
     address: string;
   };
   copyrightText: string;
+};
+
+// User Section Types
+export type TProfile = {
+  name: string;
+  email: string;
+  phone: string;
+  image: StaticImageData;
+  role: string;
+  password: string;
+  date: string;
+};
+
+export type TUser = {
+  _id?: string;
+  name: string;
+  email: string;
+  role: TRole;
+  profileImage?: string | StaticImageData;
+  phone?: string;
+  password?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 };

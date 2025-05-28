@@ -1,11 +1,11 @@
 import React from "react";
 
-function Agents() {
+function Users() {
   return (
     <div className="w-full h-full pb-2 relative mx-auto px-4 overflow-auto scrollbar-hide">
-      Agents
+      Users
     </div>
   );
 }
 
-export default Agents;
+export default Users;

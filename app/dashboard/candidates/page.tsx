@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
-function page() {
+function Candidates() {
   return (
-    <div>page</div>
-  )
+    <div className="w-full h-full pb-2 relative mx-auto px-4 overflow-auto scrollbar-hide">
+      Candidates
+    </div>
+  );
 }
 
-export default page
+export default Candidates;

@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
-function page() {
+function Profile() {
   return (
-    <div>page</div>
-  )
+    <div className="w-full h-full pb-2 relative mx-auto px-4 overflow-auto scrollbar-hide">
+      Profile
+    </div>
+  );
 }
 
-export default page
+export default Profile;

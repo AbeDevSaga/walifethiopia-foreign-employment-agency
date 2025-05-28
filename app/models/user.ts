@@ -1,14 +1,10 @@
-import mongoose, { Document } from "mongoose";
+// app/models/user.ts
+import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
+import { TUser, TRole } from "../constants/type";
 
-export type UserRole = "admin" | "super-admin" | "agent" | "user";
-
-export interface IUser extends Document {
-  name: string;
-  email: string;
+interface IUser extends mongoose.Document, Omit<TUser, '_id'> {
   password: string;
-  role: UserRole;
-  createdAt: Date;
   comparePassword(candidatePassword: string): Promise<boolean>;
 }
 
@@ -22,6 +18,7 @@ const userSchema = new mongoose.Schema<IUser>({
     default: "user",
   },
   createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now }
 });
 
 // Hash password before saving
@@ -38,5 +35,4 @@ userSchema.methods.comparePassword = async function (
   return await bcrypt.compare(candidatePassword, this.password);
 };
 
-export default mongoose.models.User ||
-  mongoose.model<IUser>("User", userSchema);
+export default mongoose.models.User || mongoose.model<IUser>("User", userSchema);
