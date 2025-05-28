@@ -3,11 +3,7 @@ import { useTranslation } from "next-i18next";
 import { useState, useEffect } from "react";
 import { GlobeAltIcon } from "@heroicons/react/24/outline";
 import { motion, AnimatePresence } from "framer-motion";
-
-interface LanguageOption {
-  code: string;
-  name: string;
-}
+import { languageData } from "@/app/constants/types/languages";
 
 interface LanguageSelectionProps {
   mobile?: boolean;
@@ -20,13 +16,6 @@ export const LanguageSelection = ({
   const [isOpen, setIsOpen] = useState(false);
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
   const [isChanging, setIsChanging] = useState(false);
-
-  const languages: LanguageOption[] = [
-    { code: "en", name: "English" },
-    { code: "am", name: "አማርኛ" },
-    { code: "ar", name: "العربية" },
-  ];
-
   // Sync language changes
   useEffect(() => {
     const handleLanguageChanged = (lng: string) => {
@@ -92,7 +81,7 @@ export const LanguageSelection = ({
             exit={{ opacity: 0, x: 5 }}
             transition={{ duration: 0.2 }}
           >
-            {languages.find((l) => l.code === currentLanguage)?.name}
+            {languageData.find((l) => l.code === currentLanguage)?.name}
           </motion.span>
         )}
       </button>
@@ -113,7 +102,7 @@ export const LanguageSelection = ({
             } bg-gray-800 rounded-md shadow-lg z-50 overflow-hidden`}
           >
             <div className="py-1">
-              {languages.map((language) => (
+              {languageData.map((language) => (
                 <motion.button
                   key={language.code}
                   onClick={() => changeLanguage(language.code)}

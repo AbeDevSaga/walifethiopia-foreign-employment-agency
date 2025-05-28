@@ -10,10 +10,11 @@ import { defaultHeroData } from "./constants/types/hero";
 import { defaultCallToAction } from "./constants/types/callToAction";
 import Footer from "./components/landing/Footer";
 import { defaultFooterData } from "./constants/types/footer";
+import "./styles/globals.css";
 
 function page() {
   return (
-    <main className="relative">
+    <main className="relative main-layout">
       <AppBar {...appBarData} />
       <Hero hero={defaultHeroData} />
       <Features />

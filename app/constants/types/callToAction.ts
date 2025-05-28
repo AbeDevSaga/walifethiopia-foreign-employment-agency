@@ -1,9 +1,11 @@
 import { TCallToAction } from "../type";
+import bg from "@/public/images/bg.jpg";
 
 export const defaultCallToAction: TCallToAction = {
   title: "Ready to Transform Your Future?",
   description: "Join hundreds of successful candidates who found international opportunities through WalifEthiopia.",
   backgroundColor: "primary",
+  backgroundImage: bg,
   buttons: [
     {
       text: "Contact Us Now",

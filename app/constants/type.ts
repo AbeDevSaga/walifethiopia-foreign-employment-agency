@@ -73,6 +73,7 @@ export type TCallToAction = {
   title: string;
   description: string;
   backgroundColor?: 'primary' | 'secondary' | 'dark';
+  backgroundImage?: string | StaticImageData;
   buttons: {
     text: string;
     variant: 'solid' | 'outline';
