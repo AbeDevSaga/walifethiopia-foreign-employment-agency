@@ -3,11 +3,24 @@ import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import React from "react";
+import { useTranslation } from 'next-i18next';
 
 interface heroProps {
   hero: THero;
 }
+
 const Hero: React.FC<heroProps> = ({ hero }) => {
+  const { t } = useTranslation('common');
+
+  // Memoized translation function
+  const getTranslatedContent = React.useCallback(
+    (content: string | { key: string; default: string }) => {
+      if (typeof content === 'string') return content;
+      return t(content.key, { defaultValue: content.default });
+    },
+    [t]
+  );
+
   return (
     <section
       id="hero"
@@ -37,42 +50,37 @@ const Hero: React.FC<heroProps> = ({ hero }) => {
               hero.textColor?.primary || "text-gray-900"
             }`}
           >
-            {hero.title}
+            {getTranslatedContent(hero.title)}
           </h1>
           <p
             className={`text-lg sm:text-xl md:text-2xl mb-10 max-w-3xl mx-auto ${
               hero.textColor?.secondary || "text-gray-600"
             }`}
           >
-            {hero.description}
+            {getTranslatedContent(hero.description)}
           </p>
 
           {/* Interactive Elements */}
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-block"
-            >
-              <Link
-                href="/login"
-                className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg text-lg font-semibold transition"
+            {hero.ctaButtons?.map((button, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-block"
               >
-                Agent Login
-              </Link>
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-block"
-            >
-              <Link
-                href="#features"
-                className="inline-block bg-white hover:bg-gray-100 text-blue-600 px-8 py-3 rounded-lg text-lg font-semibold transition"
-              >
-                Our Process
-              </Link>
-            </motion.div>
+                <Link
+                  href={button.href}
+                  className={`inline-block ${
+                    button.variant === "primary"
+                      ? "bg-blue-600 hover:bg-blue-700 text-white"
+                      : "bg-white hover:bg-gray-100 text-blue-600"
+                  } px-8 py-3 rounded-lg text-lg font-semibold transition`}
+                >
+                  {getTranslatedContent(button.text)}
+                </Link>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>

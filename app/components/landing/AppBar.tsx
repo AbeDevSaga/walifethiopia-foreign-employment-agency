@@ -5,32 +5,46 @@ import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { TAppBar } from "@/app/constants/type";
 import { motion, AnimatePresence } from "framer-motion";
+import { LanguageSelection } from "../ui/LanguageSelection";
+import { usePathname, useRouter } from "next/navigation";
+import { useTranslation } from "next-i18next";
 
 export default function AppBar({ logo, links, button }: TAppBar) {
+  const router = useRouter();
+  const { t } = useTranslation("common");
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Smooth scroll handler for hash links
+  const languages = [
+    { code: "en", name: "English" },
+    { code: "am", name: "አማርኛ" },
+    { code: "ar", name: "العربية" },
+  ];
+
   const handleSmoothScroll = (e: React.MouseEvent, href: string) => {
     e.preventDefault();
     setMobileMenuOpen(false);
-    
-    if (href.startsWith('#')) {
+
+    if (href.startsWith("#")) {
       const targetId = href.substring(1);
       const targetElement = document.getElementById(targetId);
-      
+
       if (targetElement) {
         targetElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
+          behavior: "smooth",
+          block: "start",
         });
-        
-        // Update URL without page reload
-        window.history.pushState(null, '', href);
+        window.history.pushState(null, "", href);
       }
     } else {
-      // Regular navigation for non-hash links
-      window.location.href = href;
+      router.push(href);
     }
+  };
+
+  const changeLanguage = (locale: string) => {
+    setMobileMenuOpen(false);
+    const newPath = pathname.replace(/^\/(en|am|ar)/, "") || "/";
+    router.push(`/${locale}${newPath}`);
   };
 
   return (
@@ -63,8 +77,9 @@ export default function AppBar({ logo, links, button }: TAppBar) {
           ))}
         </nav>
 
-        {/* Desktop Login Button (Right) */}
-        <div className="hidden md:block">
+        {/* Desktop Right Section (Language + Button) */}
+        <div className="hidden md:flex items-center space-x-4">
+          <LanguageSelection />
           <Link
             href={button.href}
             className={`bg-white text-gray-900 px-6 py-2 rounded-lg hover:bg-gray-100 transition duration-200`}
@@ -74,17 +89,20 @@ export default function AppBar({ logo, links, button }: TAppBar) {
         </div>
 
         {/* Mobile Menu Button */}
-        <button
-          type="button"
-          className="md:hidden -m-2.5 p-2.5 text-gray-100 hover:text-white"
-          onClick={() => setMobileMenuOpen(true)}
-        >
-          <span className="sr-only">Open menu</span>
-          <Bars3Icon className="h-6 w-6" />
-        </button>
+        <div className="md:hidden flex items-center space-x-4">
+          <LanguageSelection />
+          <button
+            type="button"
+            className="-m-2.5 p-2.5 text-gray-100 hover:text-white"
+            onClick={() => setMobileMenuOpen(true)}
+          >
+            <span className="sr-only">Open menu</span>
+            <Bars3Icon className="h-6 w-6" />
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Menu (Slide-in Panel from Left) */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <Dialog
@@ -94,7 +112,7 @@ export default function AppBar({ logo, links, button }: TAppBar) {
             onClose={setMobileMenuOpen}
             className="md:hidden fixed inset-0 z-50"
           >
-            {/* Backdrop with fade animation */}
+            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -103,7 +121,7 @@ export default function AppBar({ logo, links, button }: TAppBar) {
               onClick={() => setMobileMenuOpen(false)}
             />
 
-            {/* Panel sliding from left */}
+            {/* Panel */}
             <motion.div
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
@@ -157,7 +175,15 @@ export default function AppBar({ logo, links, button }: TAppBar) {
                       </motion.div>
                     ))}
                   </div>
-                  <div className="py-6">
+                  <div className="py-6 space-y-4">
+                    {/* Mobile Language Selection */}
+                    <div className="flex flex-col space-y-2">
+                      <span className="text-gray-400 text-sm">
+                        {t("select_language")}
+                      </span>
+                      <LanguageSelection mobile />
+                    </div>
+
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}

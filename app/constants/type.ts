@@ -1,5 +1,13 @@
 import { StaticImageData } from "next/image";
 
+export type TTranslatable = string | { key: string; default: string };
+
+export type TLanguage = {
+  code: string;
+  name: string;
+  flag?: string | StaticImageData;
+};
+
 export type TNavLink = {
   href: string;
   label: string;
@@ -27,8 +35,8 @@ export type TAppBar = {
 };
 
 export type THero = {
-  title: string;
-  description: string;
+  title: TTranslatable;
+  description: TTranslatable;
   backgroundImage?: string;
   overlayColor?: string;
   textColor?: {
@@ -36,7 +44,7 @@ export type THero = {
     secondary?: string;
   };
   ctaButtons?: {
-    text: string;
+    text: TTranslatable;
     href: string;
     variant: "primary" | "secondary";
   }[];
