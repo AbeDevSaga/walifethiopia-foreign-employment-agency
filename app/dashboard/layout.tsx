@@ -10,13 +10,31 @@ import Navbar from "../components/dashboard/Navbar";
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const router = useRouter();
   const { loading, user } = useSelector((state: RootState) => state.auth);
   console.log("user: ", user);
 
   const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
+    setIsSidebarOpen((prev) => !prev);
   };
+
+  const collabseSidebar = () => {
+    setIsCollapsed(!isCollapsed);
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setIsSidebarOpen(true);
+        setIsCollapsed(false);
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     if (loading) return; // Wait until auth check is complete
@@ -50,9 +68,16 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
 
   return (
     <div className="dashboard-container">
-      <SidebarSection isOpen={isSidebarOpen} onToggleSidebar={toggleSidebar} />
+      <SidebarSection
+        isOpen={isSidebarOpen}
+        onToggleSidebar={toggleSidebar}
+        isCollapsed={isCollapsed}
+      />
       <div className="main-content">
-        <Navbar onToggleSidebar={toggleSidebar} />
+        <Navbar
+          onToggleSidebar={toggleSidebar}
+          onCollapseSidebar={collabseSidebar}
+        />
         <main className="dashboard-main">{children}</main>
       </div>
     </div>

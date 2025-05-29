@@ -17,11 +17,11 @@ function Theme() {
   }, [theme]);
 
   return (
-    <div className="relative border rounded-lg bg-white color p-2">
+    <div className="relative color p-2">
       {/* Theme Toggle Button */}
       {theme === 'dark' ? (
         <FaMoon
-          className="w-5 h-5 text-gray-600 hover:text-gray-800 transition-colors"
+          className="w-5 h-5 lg:w-5 lg:h-5 text-gray-600 hover:text-gray-800 transition-colors"
           onClick={() => dispatch(toggleTheme())}
         />
       ) : (

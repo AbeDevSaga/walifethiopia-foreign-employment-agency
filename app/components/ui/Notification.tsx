@@ -14,9 +14,9 @@ function Notification() {
   // }, [dispatch, user?._id]);
 
   return (
-    <div className="relative border rounded-lg bg-white color p-2">
+    <div className="relative color p-2">
       {/* Notification Icon */}
-      <FaBell className="w-5 h-5 text-gray-600 hover:text-gray-800 cursor-pointer" />
+      <FaBell className="w-4 h-4 lg:w-5 lg:h-5 text-gray-600 hover:text-gray-800 cursor-pointer" />
       {/* Notification Badge */}
       {/* {notificationList.length > 0 && (
         <div className="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">

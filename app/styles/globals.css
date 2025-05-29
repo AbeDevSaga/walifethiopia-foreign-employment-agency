@@ -81,7 +81,7 @@ body {
 
 /* Sidebar style */
 .sidebar {
-  width: 250px; 
+  width: 300px; 
   background-color: var(--sidebarcolor);
   color: white;
   padding: 20px;
@@ -94,21 +94,12 @@ body {
   flex-direction: column;
 }
 
-/* Navbar area */
-.navbar {
-  background-color: #fff;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
 /* Main content of the page */
 .dashboard-main {
   flex-grow: 1;
-  padding: 20px;
+  padding: 20px 2px;
   overflow-y: auto;
 }
-
-
 
 /* Component style */
 /* Sidebar component */
@@ -120,6 +111,7 @@ body {
 /* NavItem component */
 .nav-item {
   color: var(--foreground);
+  height: 48px;
   background: transparent;
 }
 
@@ -144,6 +136,9 @@ body {
 }
 
 /* Common component */
+.box-shadow {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 .text-white {
   color: var(--white);
 }

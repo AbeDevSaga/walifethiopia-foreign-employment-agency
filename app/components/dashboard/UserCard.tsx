@@ -51,19 +51,11 @@ function UserCard({ user }: UserCardProps) {
               alt="User Profile"
               width={36}
               height={36}
-              className="object-cover"
+              className="object-cover cursor-pointer"
+              onClick={toggleMenu}
             />
           ) : (
             < FaUserAlt  size={30}/>
-          )}
-        </div>
-
-        {/* Dropdown Icon */}
-        <div className="cursor-pointer text-gray-600 hover:text-gray-800">
-          {showMenu ? (
-            <GoTriangleUp className="w-5 h-5" onClick={toggleMenu} />
-          ) : (
-            <GoTriangleDown className="w-5 h-5" onClick={toggleMenu} />
           )}
         </div>
       </div>

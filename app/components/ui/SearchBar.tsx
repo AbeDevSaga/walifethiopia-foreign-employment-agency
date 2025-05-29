@@ -5,8 +5,9 @@ import { Bars3Icon } from "@heroicons/react/24/outline";
 
 interface SearchbarProps {
   onToggleSidebar: () => void;
+  onCollapseSidebar?: () => void;
 }
-function SearchBar({ onToggleSidebar }: SearchbarProps) {
+function SearchBar({ onToggleSidebar, onCollapseSidebar }: SearchbarProps) {
   const [query, setQuery] = useState("");
 
   const handleSearch = (e: React.FormEvent) => {
@@ -23,6 +24,12 @@ function SearchBar({ onToggleSidebar }: SearchbarProps) {
       >
         <Bars3Icon className="h-6 w-6 text-gray-600 cursor-pointer" />
       </button>
+      <button
+        className="hidden lg:flex p-2 rounded-md hover:bg-gray-100 transition-colors"
+        onClick={onCollapseSidebar}
+      >
+        <Bars3Icon className="h-6 w-6 text-gray-600 cursor-pointer" />
+      </button>
 
       {/* Search Form */}
       <form
@@ -32,7 +39,7 @@ function SearchBar({ onToggleSidebar }: SearchbarProps) {
         {/* Search Button */}
         <button
           type="submit"
-          className="px-4 py-3 text-gray-500 hover:text-gray-700 transition-colors"
+          className="px-4 text-gray-500 hover:text-gray-700 transition-colors"
         >
           <FaSearch className="w-4 h-4" />
         </button>
@@ -43,7 +50,7 @@ function SearchBar({ onToggleSidebar }: SearchbarProps) {
           placeholder="Search..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="py-3 w-full focus:outline-none text-gray-700 placeholder-gray-400"
+          className="py-2 w-full focus:outline-none text-gray-700 placeholder-gray-400"
         />
       </form>
     </div>
