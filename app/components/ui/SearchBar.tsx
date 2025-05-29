@@ -21,7 +21,7 @@ function SearchBar({ onToggleSidebar }: SearchbarProps) {
         className="lg:hidden p-2 rounded-md hover:bg-gray-100 transition-colors"
         onClick={onToggleSidebar}
       >
-        <Bars3Icon className="h-6 w-6 text-gray-600" />
+        <Bars3Icon className="h-6 w-6 text-gray-600 cursor-pointer" />
       </button>
 
       {/* Search Form */}

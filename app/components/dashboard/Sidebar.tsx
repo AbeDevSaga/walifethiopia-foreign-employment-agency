@@ -25,15 +25,6 @@ function Sidebar({ onToggleSidebar }: SidebarProps) {
   }, [userRole]);
   console.log("filteredSidebarItems: ", filteredSidebarItems);
 
-  // Handle navigation with sidebar close
-  const handleNavigation = useCallback(
-    (e: React.MouseEvent) => {
-      onToggleSidebar();
-      // Add any additional navigation logic here if needed
-    },
-    [onToggleSidebar]
-  );
-
   // Redirect unauthenticated users to the login page
   useEffect(() => {
     if (!userRole) {
@@ -46,7 +37,7 @@ function Sidebar({ onToggleSidebar }: SidebarProps) {
     <div className="flex w-full flex-col h-full">
       <div className="absolute -right-0 p-2">
         <button
-          className="lg:hidden text-gray-600 focus:outline-none"
+          className="lg:hidden text-gray-600 p-2 rounded-md hover:text-gray-800 transition-colors"
           onClick={onToggleSidebar}
         >
           <XMarkIcon className="h-6 w-6 cursor-pointer" />
@@ -61,7 +52,7 @@ function Sidebar({ onToggleSidebar }: SidebarProps) {
             key={item.path}
             href={item.path}
             passHref
-            onClick={handleNavigation}
+            onClick={onToggleSidebar}
           >
             <NavItem
               icon={item.icon}
