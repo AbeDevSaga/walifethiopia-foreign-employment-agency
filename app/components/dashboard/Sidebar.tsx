@@ -4,11 +4,11 @@ import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import { RootState } from "@/app/redux/store";
-import { XMarkIcon } from "@heroicons/react/24/outline";
 import Logo from "./Logo";
 import NavItem from "./NavItem";
 import { getFilteredSidebarRoutes } from "@/app/utils/sidebarUtils";
 import { TRole } from "@/app/constants/type";
+import { logoData } from "@/app/constants/types/logo";
 
 interface SidebarProps {
   onToggleSidebar: () => void;
@@ -35,16 +35,8 @@ function Sidebar({ onToggleSidebar }: SidebarProps) {
 
   return (
     <div className="flex w-full flex-col h-full">
-      <div className="absolute -right-0 p-2">
-        <button
-          className="lg:hidden text-gray-600 p-2 rounded-md hover:text-gray-800 transition-colors"
-          onClick={onToggleSidebar}
-        >
-          <XMarkIcon className="h-6 w-6 cursor-pointer" />
-        </button>
-      </div>
       {/* Logo Section */}
-      <Logo />
+      <Logo onToggleSidebar={onToggleSidebar} logo={logoData}/>
       {/* Scrollable Sidebar Items */}
       <div className="flex-1 min-h-0 overflow-y-auto p-4 space-y-2 scrollbar-hide">
         {filteredSidebarItems.map((item) => (
