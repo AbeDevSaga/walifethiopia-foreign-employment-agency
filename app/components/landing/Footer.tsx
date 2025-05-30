@@ -3,12 +3,22 @@ import Link from "next/link";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import { TFooterProps, TFooterSection } from "@/app/constants/type";
 import SocialMedia from "../ui/SocialMedia";
+import { useTranslation } from "next-i18next";
 
 interface footerProps {
   footer: TFooterProps;
 }
 
 const Footer: React.FC<footerProps> = ({ footer }) => {
+  const { t } = useTranslation("common");
+
+  const getTranslatedContent = React.useCallback(
+    (content: string | { key: string; default: string }) => {
+      if (typeof content === "string") return content;
+      return t(content.key, { defaultValue: content.default });
+    },
+    [t]
+  );
   const handleSmoothScroll = (e: React.MouseEvent, href: string) => {
     if (href.startsWith("#")) {
       e.preventDefault();
@@ -33,10 +43,9 @@ const Footer: React.FC<footerProps> = ({ footer }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <h3 className="text-xl font-bold mb-4">WalifEthiopia</h3>
+            <h3 className="text-xl font-bold mb-4">{footer.company.name}</h3>
             <p className="mb-4">
-              Connecting Ethiopian talent with global opportunities through
-              professional training and placement services.
+              {getTranslatedContent(footer.company.description)}
             </p>
 
             {/* Social Media */}
@@ -56,7 +65,7 @@ const Footer: React.FC<footerProps> = ({ footer }) => {
           {footer?.sections.map((section: TFooterSection, index: number) => (
             <div key={`section-${index}`} className="mt-4 md:mt-0">
               <h4 className="text-lg font-semibold mb-4 border-b border-gray-700 pb-2">
-                {section.title}
+                {getTranslatedContent(section.title)}
               </h4>
               <ul className="space-y-2">
                 {section.links.map((link, linkIndex) => (
@@ -67,14 +76,14 @@ const Footer: React.FC<footerProps> = ({ footer }) => {
                         onClick={(e) => handleSmoothScroll(e, link.href)}
                         className="hover:text-blue-400 transition-colors"
                       >
-                        {link.title}
+                        {getTranslatedContent(link.title)}
                       </Link>
                     ) : (
                       <Link
                         href={link.href}
                         className="hover:text-blue-400 transition-colors"
                       >
-                        {link.title}
+                        {getTranslatedContent(link.title)}
                       </Link>
                     )}
                   </li>
@@ -86,7 +95,7 @@ const Footer: React.FC<footerProps> = ({ footer }) => {
           {/* Contact Info */}
           <div className="mt-4 md:mt-0">
             <h4 className="text-lg font-semibold mb-4 border-b border-gray-700 pb-2">
-              Contact Us
+              {t("label.contact")}
             </h4>
             <ul className="space-y-3">
               <li className="flex items-start">
@@ -109,7 +118,7 @@ const Footer: React.FC<footerProps> = ({ footer }) => {
               </li>
               <li className="flex items-start">
                 <FaMapMarkerAlt className="mt-1 mr-3 text-blue-400" />
-                <span>{footer?.contactInfo.address}</span>
+                <span>{getTranslatedContent(footer?.contactInfo.address)}</span>
               </li>
             </ul>
           </div>
@@ -117,10 +126,12 @@ const Footer: React.FC<footerProps> = ({ footer }) => {
 
         {/* Copyright */}
         <div className="border-t border-gray-800 pt-6 text-center text-gray-400">
-          <p>{footer?.copyrightText}</p>
-          <p className="mt-2 text-sm">
-            Licensed by Ethiopian Ministry of Labor and Skills
-          </p>
+          <p>{getTranslatedContent(footer?.copyrightText)}</p>
+          {footer?.liscense && (
+            <p className="mt-2 text-sm">
+              {getTranslatedContent(footer?.liscense)}
+            </p>
+          )}
         </div>
       </div>
     </footer>

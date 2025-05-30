@@ -2,7 +2,72 @@
   "hero": {
     "title": "ربط المواهب الإثيوبية بالفرص العالمية",
     "description": "تمكن واليف إثيوبيا الوكلاء من مطابقة المحترفين المهرة مع أصحاب العمل الدوليين من خلال شبكة المرشحين الموثوقة لدينا.",
+    "cta": {
+      "agent_login": "تسجيل دخول الوكيل",
+      "our_process": "عملنا"
+    }
+  },
+  "footer": {
+    "quick_links": "روابط سريعة",
+    "contact_info": "اتصل بنا",
+    "for_agents": "للوكلاء",
+    "copyright": "© 2023 WalifEthiopia. جميع الحقوق محفوظة.",
+    "liscense": "مرخص من وزارة العمل والمهارات الإثيوبية",
+    "privacy_policy": "سياسة الخصوصية",
+    "terms_of_service": "شروط الخدمة",
+    "address": "أديس أبابا، إثيوبيا",
+    "description": "ربط المواهب الإثيوبية بفرص عالمية من خلال التدريب المهني وخدمات التوظيف."
+  },
+  "link": {
+    "hero": "الرئيسية",
+    "features": "الخدمات",
+    "testimonials": "قصص النجاح",
+    "about": "معلومات عنا",
+    "contact": "اتصل بنا",
     "agent_login": "تسجيل دخول الوكيل",
-    "our_process": "عملنا"
+    "agent_register": "كن وكيلاً",
+    "resources": "الموارد"
+  },
+  "button": {
+    "login": "تسجيل الدخول",
+    "logout": "تسجيل الخروج",
+    "register": "تسجيل",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "update": "تحديث",
+    "create": "إنشاء",
+    "view": "عرض",
+    "search": "بحث",
+    "submit": "إرسال"
+  },
+  "label": {
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "confirm_password": "تأكيد كلمة المرور",
+    "name": "الاسم",
+    "first_name": "الاسم الأول",
+    "last_name": "اسم العائلة",
+    "full_name": "الاسم الكامل",
+    "date_of_birth": "تاريخ الميلاد",
+    "username": "اسم المستخدم",
+    "phone": "رقم الهاتف",
+    "contact_info": "معلومات الاتصال",
+    "contact": "اتصل بنا",
+    "profile": "الملف الشخصي",
+    "address": "العنوان",
+    "city": "المدينة",
+    "country": "الدولة",
+    "job_title": "المسمى الوظيفي",
+    "company_name": "اسم الشركة",
+    "select_language": "اختر اللغة",
+    "skills": "المهارات",
+    "experience": "الخبرة",
+    "education": "التعليم",
+    "certifications": "الشهادات",
+    "languages": "اللغات",
+    "profile_picture": "صورة الملف الشخصي",
+    "resume": "السيرة الذاتية"
   }
 }

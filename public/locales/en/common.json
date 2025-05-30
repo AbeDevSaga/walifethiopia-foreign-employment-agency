@@ -2,33 +2,72 @@
   "hero": {
     "title": "Connecting Ethiopian Talent with Global Opportunities",
     "description": "WalifEthiopia empowers agents to match skilled professionals with international employers through our verified candidate network.",
-    "agent_login": "Agent Login",
-    "our_process": "Our Process"
-  },
-  "features": {
-    "candidate_vetting": {
-      "title": "Candidate Vetting",
-      "description": "AI-powered screening with comprehensive background checks and skill verification"
-    },
-    "agent_dashboard": {
-      "title": "Agent Dashboard",
-      "description": "Real-time tracking of candidate placements with analytics and reporting tools"
-    },
-    "training_programs": {
-      "title": "Training Programs",
-      "description": "Specialized courses to prepare candidates for international employment"
-    },
-    "document_processing": {
-      "title": "Document Processing",
-      "description": "End-to-end handling of work permits, visas, and legal documentation"
-    },
-    "employer_matching": {
-      "title": "Employer Matching",
-      "description": "Smart algorithm connecting candidates with ideal international employers"
-    },
-    "support": {
-      "title": "24/7 Support",
-      "description": "Dedicated assistance for agents and candidates throughout the process"
+    "cta": {
+      "agent_login": "Agent Login",
+      "our_process": "Our Process"
     }
+  },
+  "footer": {
+    "quick_links": "Quick Links",
+    "contact_info": "Contact Us",
+    "for_agents": "For Agents",
+    "copyright": "© 2023 WalifEthiopia. All rights reserved.",
+    "liscense": "Licensed by Ethiopian Ministry of Labor and Skills",
+    "privacy_policy": "Privacy Policy",
+    "terms_of_service": "Terms of Service",
+    "address": "Addis Ababa, Ethiopia",
+    "description": "Connecting Ethiopian talent with global opportunities through professional training and placement services."
+  },
+  "link": {
+    "hero": "Home",
+    "features": "Services",
+    "testimonials": "Success Stories",
+    "about": "About Us",
+    "contact": "Contact Us",
+    "agent_login": "Agent Login",
+    "agent_register": "Become an Agent",
+    "resources": "Resources"
+  },
+  "button": {
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Register",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "update": "Update",
+    "create": "Create",
+    "view": "View",
+    "search": "Search",
+    "submit": "Submit"
+  },
+  "label": {
+    "email": "Email",
+    "password": "Password",
+    "confirm_password": "Confirm Password",
+    "name": "Name",
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "full_name": "Full Name",
+    "date_of_birth": "Date of Birth",
+    "username": "User Name",
+    "phone": "Phone Number",
+    "contact_info": "Contact Information",
+    "contact": "Contact Us",
+    "profile": "Profile",
+    "address": "Address",
+    "city": "City",
+    "country": "Country",
+    "job_title": "Job Title",
+    "company_name": "Company Name",
+    "select_language": "Select Language",
+    "skills": "Skills",
+    "experience": "Experience",
+    "education": "Education",
+    "certifications": "Certifications",
+    "languages": "Languages",
+    "profile_picture": "Profile Picture",
+    "resume": "Resume"
   }
 }

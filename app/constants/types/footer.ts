@@ -1,43 +1,84 @@
 import { TFooterProps } from "../type";
 
 export const defaultFooterData: TFooterProps = {
+  company: {
+    name: "WalifEthiopia",
+    description: {
+      key: "footer.description",
+      default:
+        "Connecting Ethiopian talent with global opportunities through professional training and placement services.",
+    },
+  },
   sections: [
     {
-      title: "Quick Links",
+      title: { key: "footer.quick_links", default: "Quick Links" },
       links: [
-        { title: "Home", href: "#hero" },
-        { title: "Services", href: "#features" },
-        { title: "Success", href: "#testimonials" },
-        { title: "Contact", href: "#contact" }
-      ]
+        { title: { key: "link.hero", default: "Home" }, href: "#hero" },
+        {
+          title: { key: "link.features", default: "Services" },
+          href: "#features",
+        },
+        {
+          title: { key: "link.testimonials", default: "Success Stories" },
+          href: "#testimonials",
+        },
+        {
+          title: { key: "link.contact", default: "Contact Us" },
+          href: "#contact",
+        },
+      ],
     },
-    // {
-    //   title: "For Candidates",
-    //   links: [
-    //     { title: "Register", href: "/register" },
-    //     { title: "Training Programs", href: "/training" },
-    //     { title: "Job Listings", href: "/jobs" }
-    //   ]
-    // },
     {
-      title: "For Agents",
+      title: { key: "footer.for_agents", default: "For Agents" },
       links: [
-        { title: "Agent Login", href: "/agent/login" },
-        { title: "Become an Agent", href: "/agent/register" },
-        { title: "Resources", href: "/agent/resources" }
-      ]
-    }
+        {
+          title: { key: "link.agent_login", default: "Agent Login" },
+          href: "/auth/login",
+        },
+        {
+          title: { key: "link.agent_register", default: "Become an Agent" },
+          href: "/auth/register",
+        },
+        {
+          title: { key: "link.resources", default: "Resources" },
+          href: "/resources",
+        },
+      ],
+    },
   ],
   socialMedia: [
-    { platform: "Facebook", icon: "facebook", href: "https://facebook.com/WalifEthiopia" },
-    { platform: "Twitter", icon: "twitter", href: "https://twitter.com/WalifEthiopia" },
-    { platform: "LinkedIn", icon: "linkedin", href: "https://linkedin.com/company/WalifEthiopia" },
-    { platform: "Instagram", icon: "instagram", href: "https://instagram.com/WalifEthiopia" }
+    {
+      platform: "Facebook",
+      icon: "facebook",
+      href: "https://facebook.com/WalifEthiopia",
+    },
+    {
+      platform: "Twitter",
+      icon: "twitter",
+      href: "https://twitter.com/WalifEthiopia",
+    },
+    {
+      platform: "LinkedIn",
+      icon: "linkedin",
+      href: "https://linkedin.com/company/WalifEthiopia",
+    },
+    {
+      platform: "Instagram",
+      icon: "instagram",
+      href: "https://instagram.com/WalifEthiopia",
+    },
   ],
   contactInfo: {
     email: "info@WalifEthiopia.com",
     phone: "+251 912 345 678",
-    address: "Addis Ababa, Ethiopia"
+    address: { key: "footer.address", default: "Addis Ababa, Ethiopia" },
   },
-  copyrightText: "© 2023 WalifEthiopia. All rights reserved."
+  copyrightText: {
+    key: "footer.copyright",
+    default: "© 2023 WalifEthiopia. All rights reserved.",
+  },
+  liscense: {
+    key: "footer.liscense",
+    default: "Licensed by Ethiopian Ministry of Labor and Skills",
+  },
 };

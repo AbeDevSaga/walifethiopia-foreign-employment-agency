@@ -2,7 +2,72 @@
   "hero": {
     "title": "የኢትዮጵያን ብቃት ያለው ሰው ኃይል ከአለም አቀፍ እድሎች ጋር ማገናኘት",
     "description": "ዋሊፍ ኢትዮጵያ አገልጋዮች በተረጋገጠ የሰው ኃይል አውታረመረብ በኩል የበለጠ ብቃት ያላቸውን ባለሙያዎች ከዓለም አቀፍ ሰራተኞች ጋር የሚያገናኝ ነው።",
-    "agent_login": "የአገልጋይ መግቢያ",
-    "our_process": "የእኛ ሂደት"
+    "cta": {
+      "agent_login": "የአገልጋይ መግቢያ",
+      "our_process": "የእኛ ሂደት"
+    }
+  },
+  "footer": {
+    "quick_links": "ፈጣን አገናኞች",
+    "contact_info": "አግኙን",
+    "for_agents": "ለወኪሎች",
+    "copyright": "© 2023 WalifEthiopia. መብት የተጠበቀ.",
+    "liscense": "በኢትዮጵያ የሥራ እና ክኢንዲስትሪ ሚኒስቴር በፈቃድ",
+    "privacy_policy": "የግላዊነት መመሪያ",
+    "terms_of_service": "የአገልግሎት ውሎች",
+    "address": "አዲስ አበባ፣ ኢትዮጵያ",
+    "description": "የኢትዮጵያ ብቃትን በተሟላ ሙያዊ ስልጠናና ስራ አቀፍ አገልግሎቶች በኩል ከዓለም አቀፍ ዕድሎች ጋር ማገናኘት።"
+  },
+  "link": {
+    "hero": "መግቢያ",
+    "features": "አገልግሎቶች",
+    "testimonials": "የተሳካ ታሪኮች",
+    "about": "ስለ እኛ",
+    "contact": "አግኙን",
+    "agent_login": "ወኪል መግቢያ",
+    "agent_register": "ወኪል ይሁኑ",
+    "resources": "ምንጮች"
+  },
+  "button": {
+    "login": "ግባ",
+    "logout": "ውጣ",
+    "register": "መመዝገብ",
+    "save": "አስቀምጥ",
+    "cancel": "ሰርዝ",
+    "delete": "ደሌዝ",
+    "edit": "አርትዕ",
+    "update": "አስተካክል",
+    "create": "ፍጠር",
+    "view": "እይ",
+    "search": "ፈልግ",
+    "submit": "ላክ"
+  },
+  "label": {
+    "email": "ኢሜይል",
+    "password": "የይለፍ ቃል",
+    "confirm_password": "የይለፍ ቃል ያረጋግጡ",
+    "name": "ስም",
+    "first_name": "የመጀመሪያ ስም",
+    "last_name": "የአባት ስም",
+    "full_name": "ሙሉ ስም",
+    "date_of_birth": "የትውልድ ቀን",
+    "username": "የተጠቃሚ ስም",
+    "phone": "ስልክ ቁጥር",
+    "contact_info": "የእኛን መገናኛ መረጃ",
+    "contact": "አግኙን",
+    "profile": "መገናኛ መረጃ",
+    "address": "አድራሻ",
+    "city": "ከተማ",
+    "country": "አገር",
+    "job_title": "የስራ መደብ",
+    "company_name": "የኩባንያ ስም",
+    "select_language": "ቋንቋ ይምረጡ",
+    "skills": "ችሎታዎች",
+    "education": "ትምህርት",
+    "experience": "ልምድ",
+    "certifications": "ማረጋገጫዎች",
+    "languages": "ቋንቋዎች",
+    "profile_picture": "የመገለጫ ፎቶ",
+    "resume": "ሪዙመ"
   }
 }
