@@ -30,8 +30,10 @@
   },
   "button": {
     "login": "ግባ",
-    "logout": "ውጣ",
+    "signup": "ይመዝገቡ",
+    "signin": "ይግቡ",
     "register": "መመዝገብ",
+    "logout": "ውጣ",
     "save": "አስቀምጥ",
     "cancel": "ሰርዝ",
     "delete": "ደሌዝ",
@@ -45,6 +47,7 @@
   "label": {
     "email": "ኢሜይል",
     "password": "የይለፍ ቃል",
+    "forgot_password": "የይለፍ ቃል ረሳሁ?",
     "confirm_password": "የይለፍ ቃል ያረጋግጡ",
     "name": "ስም",
     "first_name": "የመጀመሪያ ስም",
@@ -69,5 +72,12 @@
     "languages": "ቋንቋዎች",
     "profile_picture": "የመገለጫ ፎቶ",
     "resume": "ሪዙመ"
+  },
+  "text": {
+    "welcome": "እንኳን ወደ WalifEthiopia በደህና መጡ",
+    "learn_more": "ተጨማሪ መረጃ",
+    "get_started": "መጀመር",
+    "join_now": "አሁን ይቀላቀሉ",
+    "remember_me": "አስታውሰኝ"
   }
 }

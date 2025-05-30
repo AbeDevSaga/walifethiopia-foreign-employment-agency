@@ -30,8 +30,10 @@
   },
   "button": {
     "login": "Login",
-    "logout": "Logout",
+    "signup": "Sign Up",
+    "signin": "Sign In",
     "register": "Register",
+    "logout": "Logout",
     "save": "Save",
     "cancel": "Cancel",
     "delete": "Delete",
@@ -46,6 +48,7 @@
     "email": "Email",
     "password": "Password",
     "confirm_password": "Confirm Password",
+    "forgot_password": "Forgot Password?",
     "name": "Name",
     "first_name": "First Name",
     "last_name": "Last Name",
@@ -69,5 +72,12 @@
     "languages": "Languages",
     "profile_picture": "Profile Picture",
     "resume": "Resume"
+  },
+  "text": {
+    "welcome": "Welcome to WalifEthiopia",
+    "learn_more": "Learn More",
+    "get_started": "Get Started",
+    "join_now": "Join Now",
+    "remember_me": "Remember Me"
   }
 }
