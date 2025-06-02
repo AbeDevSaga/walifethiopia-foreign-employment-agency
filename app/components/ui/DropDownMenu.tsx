@@ -19,6 +19,8 @@ function DropDownMenu({ label, actionKey, toggleMenu }: DropDownMenuProps) {
     action();
     if (actionKey === "onViewProfile") {
       router.push("/dashboard/profile");
+    } else if (actionKey === "onSettings") {
+      router.push("/dashboard/settings");
     }
     if (toggleMenu) {
       toggleMenu();
