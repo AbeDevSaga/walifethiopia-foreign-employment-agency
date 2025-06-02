@@ -32,7 +32,9 @@
     "login": "Login",
     "signup": "Sign Up",
     "signin": "Sign In",
+    "signing_in": "Signing In...",
     "register": "Register",
+    "registering": "Registering...",
     "logout": "Logout",
     "save": "Save",
     "cancel": "Cancel",
@@ -75,6 +77,8 @@
   },
   "text": {
     "welcome": "Welcome to WalifEthiopia",
+    "welcome_back": "Welcome Back to WalifEthiopia",
+    "login_to_continue": "Please log in to continue",
     "learn_more": "Learn More",
     "get_started": "Get Started",
     "join_now": "Join Now",

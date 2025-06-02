@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -8,6 +7,7 @@ import { FiMail, FiLock, FiAlertCircle } from "react-icons/fi";
 import { FaSpinner } from "react-icons/fa";
 import { AppDispatch } from "@/app/redux/store";
 import { useDispatch } from "react-redux";
+import { useTranslation } from "next-i18next";
 import { loginUser } from "@/app/redux/slices/authSlice";
 
 export default function LoginPage() {
@@ -17,6 +17,8 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const { t } = useTranslation("common");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -48,13 +50,12 @@ export default function LoginPage() {
         <div className="bg-white rounded-xl shadow-2xl p-8 sm:p-10">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-extrabold text-gray-900">
-              Welcome back
+              {t("text.welcome_back")}
             </h2>
             <p className="mt-2 text-sm text-gray-600">
-              Sign in to your WalifEthiopia account
+              {t("text.login_to_continue")}
             </p>
           </div>
-
           {error && (
             <motion.div
               initial={{ opacity: 0, y: -10 }}
@@ -72,7 +73,7 @@ export default function LoginPage() {
                 htmlFor="email"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
-                Email address
+                {t("label.email")}
               </label>
               <div className="relative rounded-md shadow-sm">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -95,7 +96,7 @@ export default function LoginPage() {
                 htmlFor="password"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
-                Password
+                {t("label.password")}
               </label>
               <div className="relative rounded-md shadow-sm">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -125,7 +126,7 @@ export default function LoginPage() {
                   htmlFor="remember-me"
                   className="ml-2 block text-sm text-gray-700"
                 >
-                  Remember me
+                  {t("text.remember_me")}
                 </label>
               </div>
 
@@ -134,7 +135,7 @@ export default function LoginPage() {
                   href="/auth/forgot-password"
                   className="font-medium text-blue-600 hover:text-blue-500 transition duration-150 ease-in-out"
                 >
-                  Forgot password?
+                  {t("label.forgot_password")}
                 </Link>
               </div>
             </div>
@@ -150,10 +151,10 @@ export default function LoginPage() {
                 {loading ? (
                   <>
                     <FaSpinner className="animate-spin mr-2" />
-                    Signing in...
+                    {t("button.signing_in")}
                   </>
                 ) : (
-                  "Sign in"
+                  t("button.signin")
                 )}
               </button>
             </div>

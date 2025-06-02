@@ -20,11 +20,9 @@ export type THeadline = {
 };
 
 export type TLanguage = {
-  country: {
-    image: StaticImageData;
-    language: string;
-    code: string;
-  };
+  image: StaticImageData;
+  language: string;
+  code: string;
 };
 
 export type TNavLink = {

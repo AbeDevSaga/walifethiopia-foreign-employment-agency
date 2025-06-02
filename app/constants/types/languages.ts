@@ -1,28 +1,22 @@
-import usFlag from "@/public/images/usa.png"; 
-import frFlag from "@/public/images/france.png"; 
-import esFlag from "@/public/images/spain.png";
+import usFlag from "@/public/flags/usa.png";
+import saudiFlag from "@/public/flags/saudi-arabia.png";
+import etFlag from "@/public/flags/ethiopia.png";
 import { TLanguage } from "../type";
 
 export const languages: TLanguage[] = [
   {
-    country: {
-      image: usFlag,
-      language: "English (US)",
-      code: "en-US",
-    },
+    image: usFlag,
+    language: "English (US)",
+    code: "en",
   },
   {
-    country: {
-      image: frFlag,
-      language: "Français (FR)",
-      code: "fr-FR",
-    },
+    image: saudiFlag,
+    language: "العربية (SA)",
+    code: "ar",
   },
   {
-    country: {
-      image: esFlag,
-      language: "Español (ES)",
-      code: "es-ES",
-    },
+    image: etFlag,
+    language: "አማርኛ (ET)",
+    code: "am",
   },
 ];

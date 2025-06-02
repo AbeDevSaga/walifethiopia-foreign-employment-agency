@@ -9,7 +9,7 @@
 
 //     const adminData = {
 //       name: "Admin User",
-//       email: "admin@walifethiopia.com",
+//       email: "admin@example.com",
 //       password: "admin123",
 //       role: "admin",
 //     };

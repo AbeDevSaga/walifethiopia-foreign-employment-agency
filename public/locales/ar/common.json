@@ -32,7 +32,9 @@
     "login": "تسجيل الدخول",
     "signup": "إنشاء حساب",
     "signin": "تسجيل الدخول",
+    "signing_in": "جارٍ تسجيل الدخول...",
     "register": "تسجيل",
+    "registering": "جارٍ التسجيل...",
     "logout": "تسجيل الخروج",
     "save": "حفظ",
     "cancel": "إلغاء",
@@ -75,6 +77,8 @@
   },
   "text": {
     "welcome": "مرحبًا بك في WalifEthiopia",
+    "welcome_back": "مرحبًا بعودتك إلى WalifEthiopia",
+    "login_to_continue": "يرجى تسجيل الدخول للمتابعة",
     "learn_more": "اعرف المزيد",
     "get_started": "ابدأ الآن",
     "join_now": "انضم الآن",

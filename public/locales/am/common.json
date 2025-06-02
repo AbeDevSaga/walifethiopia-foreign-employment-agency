@@ -32,7 +32,9 @@
     "login": "ግባ",
     "signup": "ይመዝገቡ",
     "signin": "ይግቡ",
+    "signing_in": "በመግባት ላይ...",
     "register": "መመዝገብ",
+    "registering": "በመመዝገብ ላይ...",
     "logout": "ውጣ",
     "save": "አስቀምጥ",
     "cancel": "ሰርዝ",
@@ -75,6 +77,8 @@
   },
   "text": {
     "welcome": "እንኳን ወደ WalifEthiopia በደህና መጡ",
+    "welcome_back": "እንኳን ወደ WalifEthiopia በደህና መለሳችሁ",
+    "login_to_continue": "እባክዎ ለመቀጠል ይግቡ",
     "learn_more": "ተጨማሪ መረጃ",
     "get_started": "መጀመር",
     "join_now": "አሁን ይቀላቀሉ",
