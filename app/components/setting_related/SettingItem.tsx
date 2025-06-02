@@ -22,19 +22,21 @@ const SettingItem: React.FC<SettingItemProps> = ({ setting, onChange }) => {
           <p className="text-sm text-gray-500 mt-1">{setting.description}</p>
         </div>
         {setting.type === "toggle" && (
-          <Switch
-            checked={setting.value as boolean}
-            onChange={(value: boolean) => onChange(setting.id, value)}
-            className={`${
-              setting.value ? "bg-primary" : "bg-gray-200"
-            } relative inline-flex h-6 w-11 items-center rounded-full transition-colors`}
-          >
-            <span
+          <div className="flex items-center justify-start min-w-[50px]">
+            <Switch
+              checked={setting.value as boolean}
+              onChange={(value: boolean) => onChange(setting.id, value)}
               className={`${
-                setting.value ? "translate-x-6" : "translate-x-1"
-              } inline-block h-4 w-4 transform rounded-full bg-white transition-transform`}
-            />
-          </Switch>
+                setting.value ? "bg-primary" : "bg-gray-200"
+              } relative inline-flex h-6 w-11 items-center rounded-full transition-colors`}
+            >
+              <span
+                className={`${
+                  setting.value ? "translate-x-6" : "translate-x-1"
+                } inline-block h-4 w-4 transform rounded-full bg-white transition-transform`}
+              />
+            </Switch>
+          </div>
         )}
       </div>
 
