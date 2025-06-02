@@ -10,24 +10,9 @@ import {
 } from "react-icons/bi"; // Import icons
 import { MdOutlinePersonAddAlt } from "react-icons/md";
 
+import { useTranslation } from "next-i18next";
 import { FiCalendar } from "react-icons/fi";
-
-// Define the type for the props
-interface ActionButtonProps {
-  label: string; // Button label
-  isCollapsed?: boolean;
-  icon?:
-    | "logout"
-    | "user"
-    | "edit"
-    | "delete"
-    | "update"
-    | "add_user"
-    | "service"
-    | "upload"
-    | "calendar";
-  onClick: () => void; // Action to perform on click
-}
+import { TActionButton } from "@/app/constants/type";
 
 // Map icon names to their corresponding components
 const iconMap = {
@@ -42,7 +27,7 @@ const iconMap = {
   calendar: FiCalendar,
 };
 
-const ActionButton: React.FC<ActionButtonProps> = ({
+const ActionButton: React.FC<TActionButton> = ({
   label,
   icon,
   onClick,
@@ -50,6 +35,7 @@ const ActionButton: React.FC<ActionButtonProps> = ({
 }) => {
   // Get the icon component based on the icon name
   const IconComponent = icon ? iconMap[icon] : null;
+  const { t } = useTranslation("common");
 
   return (
     <div className={`flex items-center justify-center w-full p-3`}>
@@ -57,8 +43,12 @@ const ActionButton: React.FC<ActionButtonProps> = ({
         className={`action-button py-2 w-full rounded-lg flex items-center justify-center shadow-lg hover:shadow-none transition-shadow  whitespace-nowrap`}
         onClick={onClick}
       >
-        {IconComponent && <IconComponent className={`${isCollapsed ?"":"mr-3"} text-white`} />}
-        {!isCollapsed && label}
+        {IconComponent && (
+          <IconComponent
+            className={`${isCollapsed ? "" : "mr-3"} text-white`}
+          />
+        )}
+        {!isCollapsed && t(`button.${icon}` || label)}
       </button>
     </div>
   );

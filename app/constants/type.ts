@@ -3,8 +3,23 @@ import { StaticImageData } from "next/image";
 export type TTranslatable = string | { key: string; default: string };
 
 export type TRole = "admin" | "super-admin" | "agent" | "candidate";
+export type TActionButtonIcons =
+  | "logout"
+  | "user"
+  | "edit"
+  | "delete"
+  | "update"
+  | "add_user"
+  | "service"
+  | "upload"
+  | "calendar";
 
 // Common Types
+export type TNavigationItem = {
+  label: TTranslatable;
+  path: string;
+  icon: string;
+};
 export type TCompany = {
   name: string;
   description: TTranslatable;
@@ -61,6 +76,12 @@ export type TFeatures = {
 export type TLable = {
   text: TTranslatable;
   className?: string;
+};
+export type TActionButton = {
+  label: TTranslatable;
+  icon?: TActionButtonIcons;
+  onClick?: () => void;
+  isCollapsed?: boolean;
 };
 export type TButton = {
   href: string;

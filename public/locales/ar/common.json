@@ -28,6 +28,19 @@
     "agent_register": "كن وكيلاً",
     "resources": "الموارد"
   },
+  "sidebar": {
+    "dashboard": "لوحة التحكم",
+    "users": "المستخدمون",
+    "candidates": "المرشحون",
+    "agents": "الوكلاء",
+    "super_admins": "المسؤولون الكبار",
+    "admins": "إدارة المسؤولين",
+    "notifications": "الإشعارات",
+    "profile": "الملف الشخصي",
+    "jobs": "الوظائف",
+    "applications": "الطلبات",
+    "settings": "الإعدادات"
+  },
   "button": {
     "login": "تسجيل الدخول",
     "signup": "إنشاء حساب",

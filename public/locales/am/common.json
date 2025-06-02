@@ -28,6 +28,19 @@
     "agent_register": "ወኪል ይሁኑ",
     "resources": "ምንጮች"
   },
+  "sidebar": {
+    "dashboard": "ዳሽቦርድ",
+    "users": "ተጠቃሚዎች",
+    "candidates": "እጩዎች",
+    "agents": "ወኪሎች",
+    "super_admins": "ሱፐር አስተዳዳሪዎች",
+    "admins": "አስተዳዳሪዎችን አስተዳድር",
+    "notifications": "ማሳወቂያዎች",
+    "profile": "መገለጫ",
+    "jobs": "ስራዎች",
+    "applications": "የመዝገብ ቅፅዎች",
+    "settings": "ቅንብሮች"
+  },
   "button": {
     "login": "ግባ",
     "signup": "ይመዝገቡ",

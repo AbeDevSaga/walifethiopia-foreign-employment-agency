@@ -56,8 +56,7 @@ function Sidebar({ onToggleSidebar, isCollapsed }: SidebarProps) {
             onClick={onToggleSidebar}
           >
             <NavItem
-              icon={item.icon}
-              text={item.label}
+              navItem={item}
               active={pathname === item.path}
               isCollapsed={isCollapsed}
             />

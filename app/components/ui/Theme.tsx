@@ -17,7 +17,7 @@ function Theme() {
   }, [theme]);
 
   return (
-    <div className="relative color p-2">
+    <div className="relative color p-2 cursor-pointer flex items-center justify-center">
       {/* Theme Toggle Button */}
       {theme === 'dark' ? (
         <FaMoon

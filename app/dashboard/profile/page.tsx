@@ -1,9 +1,17 @@
-import React from "react";
+"use client";
+import UserProfileCard from "@/app/components/ui/UserProfileCard";
+import { userProfileExample } from "@/app/constants/types/profileExample";
+import React, { useState } from "react";
 
 function Profile() {
+  const [editable, setEditable] = useState(true);
   return (
     <div className="w-full h-full pb-2 relative mx-auto px-4 overflow-auto scrollbar-hide">
-      Profile
+      <UserProfileCard
+        user={userProfileExample}
+        editable={editable}
+        onEdit={() => console.log("Edit clicked")}
+      />
     </div>
   );
 }

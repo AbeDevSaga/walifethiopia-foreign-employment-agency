@@ -28,6 +28,19 @@
     "agent_register": "Become an Agent",
     "resources": "Resources"
   },
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "candidates": "Candidates",
+    "agents": "Agents",
+    "super_admins": "Super Admins",
+    "admins": "Manage Admins",
+    "notifications": "Notifications",
+    "profile": "Profile",
+    "jobs": "Jobs",
+    "applications": "Applications",
+    "settings": "Settings"
+  },
   "button": {
     "login": "Login",
     "signup": "Sign Up",

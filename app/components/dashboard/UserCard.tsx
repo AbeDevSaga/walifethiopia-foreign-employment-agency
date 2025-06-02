@@ -4,7 +4,7 @@ import Image from "next/image";
 import { FaUserAlt } from "react-icons/fa";
 import { TUser } from "@/app/constants/type";
 import { profile } from "@/app/constants/types/userProfile";
-import ViewProfile from "./ViewProfile";
+import ProfileDropdown from "../ui/ProfileDropdown";
 
 interface UserCardProps {
   user: TUser | null; // Pass the logged-in user as a prop
@@ -24,6 +24,16 @@ function UserCard({ user }: UserCardProps) {
   const handleViewProfile = () => {
     setShowViewProfile(true); // Open the ViewProfile modal
     setShowMenu(false); // Close the dropdown menu
+  };
+
+  const handleSettings = () => {
+    // Handle settings click
+    setShowMenu(false);
+  };
+
+  const handleLogout = () => {
+    // Handle logout
+    setShowMenu(false);
   };
 
   // Close ViewProfile modal
@@ -54,27 +64,18 @@ function UserCard({ user }: UserCardProps) {
               onClick={toggleMenu}
             />
           ) : (
-            < FaUserAlt  size={30}/>
+            <FaUserAlt size={30} />
           )}
         </div>
       </div>
-
       {/* Dropdown Menu */}
       {showMenu && (
-        <div className="absolute top-12 left-0 bg-white border rounded-lg shadow-lg p-2 z-10">
-          <p
-            className="px-1 hover:text-primary cursor-pointer"
-            onClick={handleViewProfile}
-          >
-            View Profile
-          </p>
-        </div>
-      )}
-      {/* ViewProfile Modal */}
-      {showViewProfile && user && (
-        <ViewProfile
+        <ProfileDropdown
           user={profile}
-          closeViewUser={closeViewProfile}
+          isOpen={showMenu}
+          onViewProfile={handleViewProfile}
+          onSettings={handleSettings}
+          onLogout={handleLogout}
         />
       )}
     </div>
