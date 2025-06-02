@@ -37,12 +37,16 @@ const SystemSettings: React.FC<SystemSettingsProps> = ({
   const createSettingChangeHandler = (category: TSettingCategory) => {
     return (id: string, value: boolean | string | number) => {
       setLocalSettings((prev) =>
-        prev.map((cat) => ({
-          ...cat,
-          settings: cat.settings.map((setting) =>
-            setting.id === id ? { ...setting, value } : setting
-          ),
-        }))
+        prev.map((cat) =>
+          cat.category === category
+            ? {
+                ...cat,
+                settings: cat.settings.map((setting) =>
+                  setting.id === id ? { ...setting, value } : setting
+                ),
+              }
+            : cat
+        )
       );
     };
   };
