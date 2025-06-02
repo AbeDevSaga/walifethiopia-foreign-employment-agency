@@ -9,6 +9,7 @@ export const permissions: Record<TRole, string[]> = {
     "users",
     "notifications",
     "super-admins",
+    "settings",
   ],
   "super-admin": [
     "dashboard",

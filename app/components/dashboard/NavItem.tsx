@@ -7,6 +7,7 @@ import {
   FaUserTie,
   FaUserAlt,
 } from "react-icons/fa";
+import { FiSettings } from "react-icons/fi";
 import { RiUserStarLine } from "react-icons/ri";
 import { useTranslation } from "next-i18next";
 import { TNavigationItem } from "@/app/constants/type";
@@ -24,6 +25,7 @@ const iconMapping: IconMapping = {
   superAdmins: RiUserStarLine,
   notifications: MdNotifications,
   profile: FaUserAlt,
+  settings: FiSettings,
 };
 
 interface NavItemProps {

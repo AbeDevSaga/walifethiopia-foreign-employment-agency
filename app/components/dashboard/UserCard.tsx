@@ -11,7 +11,6 @@ interface UserCardProps {
 }
 
 function UserCard({ user }: UserCardProps) {
-  // State for dropdown menu and ViewProfile modal
   const [showMenu, setShowMenu] = useState(false);
   console.log("UserCard rendered with user:", user);
   // Toggle dropdown menu
@@ -19,20 +18,6 @@ function UserCard({ user }: UserCardProps) {
     setShowMenu(!showMenu);
   };
 
-  // Handle View Profile click
-  const handleViewProfile = () => {
-    setShowMenu(false); // Close the dropdown menu
-  };
-
-  const handleSettings = () => {
-    // Handle settings click
-    setShowMenu(false);
-  };
-
-  const handleLogout = () => {
-    // Handle logout
-    setShowMenu(false);
-  };
 
   return (
     <div className="relative">
@@ -66,9 +51,7 @@ function UserCard({ user }: UserCardProps) {
         <ProfileDropdown
           user={profile}
           isOpen={showMenu}
-          onViewProfile={handleViewProfile}
-          onSettings={handleSettings}
-          onLogout={handleLogout}
+          toggleMenu={toggleMenu}
         />
       )}
     </div>

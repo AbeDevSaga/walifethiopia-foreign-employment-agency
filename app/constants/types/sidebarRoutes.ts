@@ -41,4 +41,9 @@ export const sidebarRoutes: TNavigationItem[] = [
     icon: "profile",
     label: { key: "sidebar.profile", default: "Profile" },
   },
+  {
+    path: "/dashboard/settings",
+    icon: "settings",
+    label: { key: "sidebar.settings", default: "Settings" },
+  },
 ];

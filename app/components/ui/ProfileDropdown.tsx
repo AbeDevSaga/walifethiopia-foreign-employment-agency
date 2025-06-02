@@ -3,22 +3,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import React from "react";
 import UserProfile from "./UserProfile";
 import { TUser } from "@/app/constants/type";
+import { profileDropDownItems } from "@/app/constants/types/dropDownMenu";
+import DropDownMenu from "./DropDownMenu";
 
 interface ProfileDropdownProps {
   user: TUser;
   isOpen: boolean;
-  onViewProfile: () => void;
-  onSettings: () => void;
-  onLogout: () => void;
+  toggleMenu: () => void;
 }
 
-function ProfileDropdown({
-  user,
-  isOpen,
-  onViewProfile,
-  onSettings,
-  onLogout,
-}: ProfileDropdownProps) {
+function ProfileDropdown({ user, isOpen, toggleMenu }: ProfileDropdownProps) {
   // Animation variants
   const dropdownVariants = {
     hidden: {
@@ -59,28 +53,15 @@ function ProfileDropdown({
           <div className="flex items-center border-1 border-gray-200 rounded-lg p-2 shadow-lg mb-2">
             <UserProfile user={user} />
           </div>
-
-          <motion.p
-            className="px-4 py-2 hover:text-primary cursor-pointer hover:bg-gray-100 rounded-md"
-            whileHover={{ x: 2 }}
-            onClick={onViewProfile}
-          >
-            View Profile
-          </motion.p>
-          <motion.p
-            className="px-4 py-2 hover:text-primary cursor-pointer hover:bg-gray-100 rounded-md"
-            whileHover={{ x: 2 }}
-            onClick={onSettings}
-          >
-            Settings
-          </motion.p>
-          <motion.p
-            className="px-4 py-2 hover:text-primary cursor-pointer hover:bg-gray-100 rounded-md"
-            whileHover={{ x: 2 }}
-            onClick={onLogout}
-          >
-            Logout
-          </motion.p>
+          {/* profileDropDownItems */}
+          {profileDropDownItems.map((item, index) => (
+            <DropDownMenu
+              key={index}
+              label={item.label}
+              actionKey={item.actionKey}
+              toggleMenu={toggleMenu}
+            />
+          ))}
         </motion.div>
       )}
     </AnimatePresence>

@@ -1,4 +1,5 @@
 import { StaticImageData } from "next/image";
+import { DropdownFunctionKeys } from "../utils/dropdownHelpers";
 
 export type TTranslatable = string | { key: string; default: string };
 
@@ -13,6 +14,18 @@ export type TActionButtonIcons =
   | "service"
   | "upload"
   | "calendar";
+
+export type TSettingCategory =
+  | "general"
+  | "security"
+  | "notifications"
+  | "performance"
+  | "appearance"
+  | "integrations"
+  | "privacy"
+  | "accessibility";
+
+export type TSettingType = "toggle" | "input" | "select";
 
 // Common Types
 export type TNavigationItem = {
@@ -46,6 +59,14 @@ export type TNavLink = {
   className?: string;
 };
 
+export type TSetting = {
+  id: string;
+  name: string;
+  description: string;
+  value: boolean | string | number;
+  type: TSettingType;
+  options?: string[];
+};
 export type TLogo = {
   src: string | StaticImageData;
   alt: string;
@@ -73,6 +94,11 @@ export type TFeatures = {
   delay?: number;
 };
 // Components Types
+export type TDropdownMenu = {
+  label: string;
+  actionKey: DropdownFunctionKeys;
+};
+
 export type TLable = {
   text: TTranslatable;
   className?: string;
@@ -94,7 +120,10 @@ export type TAppBar = {
   links: TNavLink[];
   button: TButton;
 };
-
+export type TSystemSetting = {
+  category: TSettingCategory;
+  settings: TSetting[];
+};
 export type THero = {
   title: TTranslatable;
   description: TTranslatable;
