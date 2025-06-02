@@ -1,6 +1,5 @@
 // components/SystemSettings.tsx
 "use client";
-
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -35,23 +34,8 @@ const SystemSettings: React.FC<SystemSettingsProps> = ({
     settings[0]?.category || "general"
   );
 
-  const handleSettingChange = (
-    category: TSettingCategory,
-    id: string,
-    value: any
-  ) => {
-    setLocalSettings((prev) =>
-      prev.map((cat) => ({
-        ...cat,
-        settings: cat.settings.map((setting) =>
-          setting.id === id ? { ...setting, value } : setting
-        ),
-      }))
-    );
-  };
-
   const createSettingChangeHandler = (category: TSettingCategory) => {
-    return (id: string, value: any) => {
+    return (id: string, value: boolean | string | number) => {
       setLocalSettings((prev) =>
         prev.map((cat) => ({
           ...cat,

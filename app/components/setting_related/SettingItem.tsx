@@ -7,7 +7,7 @@ import { TSetting } from "@/app/constants/type";
 
 interface SettingItemProps {
   setting: TSetting;
-  onChange: (id: string, value: any) => void;
+  onChange: (id: string, value: boolean | string | number) => void;
 }
 
 const SettingItem: React.FC<SettingItemProps> = ({ setting, onChange }) => {
