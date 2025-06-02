@@ -13,8 +13,7 @@ interface UserCardProps {
 function UserCard({ user }: UserCardProps) {
   // State for dropdown menu and ViewProfile modal
   const [showMenu, setShowMenu] = useState(false);
-  const [showViewProfile, setShowViewProfile] = useState(false);
-
+  console.log("UserCard rendered with user:", user);
   // Toggle dropdown menu
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -22,7 +21,6 @@ function UserCard({ user }: UserCardProps) {
 
   // Handle View Profile click
   const handleViewProfile = () => {
-    setShowViewProfile(true); // Open the ViewProfile modal
     setShowMenu(false); // Close the dropdown menu
   };
 
@@ -34,11 +32,6 @@ function UserCard({ user }: UserCardProps) {
   const handleLogout = () => {
     // Handle logout
     setShowMenu(false);
-  };
-
-  // Close ViewProfile modal
-  const closeViewProfile = () => {
-    setShowViewProfile(false); // Close the ViewProfile modal
   };
 
   return (
